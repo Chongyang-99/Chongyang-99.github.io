@@ -34,6 +34,9 @@ links:
   - icon: academicons/cv
     url: uploads/resume.pdf
     label: CV
+  - icon: brands/weixin
+    url: "javascript:void(0)"
+    label: 'WeChat: godxzp'
 
 interests:
   - World Action Model

@@ -97,7 +97,10 @@ body {
     radial-gradient(ellipse at 85% 5%, rgba(230,90,20,0.85) 0%, rgba(240,130,50,0.55) 20%, rgba(245,170,80,0.3) 40%, transparent 65%),
     #e8d0a8 !important;
   background-attachment: fixed !important;
-  background-attachment: fixed !important;
+}
+
+html {
+  zoom: 0.8;
 }
 
 body, .prose, p {
@@ -124,7 +127,7 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
   max-width: 100% !important;
 }
 
-.prose {
+.prose, .max-w-prose {
   max-width: 100% !important;
 }
 
@@ -143,8 +146,8 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
   align-items: flex-start;
   gap: 24px;
   padding: 8px 0;
-  border-top: 1px solid #d4d0c8;
-  border-bottom: 1px solid #d4d0c8;
+  border-top: 1px solid #a89878;
+  border-bottom: 1px solid #a89878;
 }
 
 .edu-logo {
@@ -207,6 +210,31 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
   font-weight: 600;
 }
 
+/* WeChat tooltip */
+a[title="WeChat: godxzp"] {
+  position: relative;
+}
+
+a[title="WeChat: godxzp"]:hover::after {
+  content: 'WeChat: godxzp';
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.visitor-badge {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
 .interests-quote {
   font-family: 'Kalam', cursive;
   font-size: 1.6rem;
@@ -267,10 +295,12 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
   z-index: 1;
   flex: 1;
   border: none;
-  border-top: 1.5px solid #d4d0c8;
-  border-bottom: 1.5px solid #d4d0c8;
+  border-top: 1.5px solid #a89878;
+  border-bottom: 1.5px solid #a89878;
   padding: 12px 8px;
   position: relative;
+  min-height: 170px;
+  justify-content: center;
 }
 
 .intern-entry + .intern-entry::before {
@@ -344,6 +374,304 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
   font-size: 0.8rem;
   color: #999;
   letter-spacing: 0.03em;
+}
+
+/* News list */
+.news-list {
+  padding: 0;
+  column-count: 2;
+  column-gap: 24px;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.news-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #a89878;
+  font-size: 1.1rem;
+  color: #333;
+  break-inside: avoid;
+}
+
+.news-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #999;
+  margin-right: 8px;
+  min-width: 5em;
+  display: inline-block;
+}
+
+/* Publication section spacing */
+#papers {
+  margin-top: 3rem !important;
+}
+
+#papers .prose, #papers .max-w-prose {
+  max-width: 80rem !important;
+}
+
+#papers .flex.flex-col {
+  display: block !important;
+}
+
+.pub-list, .pub-list * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.pub-list .pub-item {
+  padding: 14px 0 !important;
+  border-bottom: 1px solid #a89878;
+}
+
+.pub-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+/* Publication container - full width */
+.pub-list {
+  max-width: 100% !important;
+}
+
+.pub-list, .pub-list * {
+  max-width: 100% !important;
+}
+
+/* Publication list - reference site style */
+.pub-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block !important;
+}
+
+.pub-list .pub-item {
+  display: flex !important;
+  flex-grow: 0 !important;
+  flex-basis: auto !important;
+}
+
+.pub-item {
+  display: flex !important;
+  gap: 16px;
+  padding: 14px 0 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid #a89878;
+  align-items: center !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.pub-item:first-child {
+  border-top: 1px solid #a89878;
+}
+
+.pub-thumb {
+  width: 260px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pub-thumb img {
+  width: 260px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.pub-body {
+  flex: 1;
+  align-self: flex-start;
+}
+
+.pub-title {
+  font-family: 'Crimson Text', serif !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 3px;
+}
+
+.pub-authors {
+  font-family: 'Crimson Text', serif !important;
+  font-size: 1.35rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 3px;
+}
+
+.pub-self {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-style: normal;
+  background: linear-gradient(to top, #fef08a 40%, transparent 40%);
+  padding: 0 2px;
+}
+
+.pub-venue {
+  font-family: 'Crimson Text', serif !important;
+  font-size: 1.35rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.pub-venue-name {
+  font-weight: 600;
+  font-style: normal;
+}
+
+.pub-badge {
+  color: #dc2626;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.pub-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pub-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  padding: 3px 10px;
+  border: 1px solid #d4d0c8;
+  border-radius: 3px;
+  background: #f0ede8;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.pub-link:hover {
+  background: #e0ddd8;
+  border-color: #999;
+}
+
+/* Awards list */
+.awards-list {
+  padding: 0;
+}
+
+.award-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #a89878;
+  font-size: 1.05rem;
+  color: #333;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.award-item:first-child {
+  border-top: 1px solid #a89878;
+}
+
+.award-icon {
+  flex-shrink: 0;
+}
+
+.award-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #999;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+#honors {
+  margin-top: 3rem !important;
+}
+
+/* Certificate gallery */
+.cert-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 0.5rem;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cert-gallery, .cert-gallery * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.cert-card {
+  background: transparent;
+  border: 1.5px solid #a89878;
+  border-radius: 8px;
+  padding: 0;
+  text-align: center;
+  box-shadow: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.cert-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.cert-label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 6px;
+}
+
+/* Hide HugoBlox attribution */
+p.powered-by.text-center.text-sm {
+  display: none !important;
+}
+
+p.powered-by.text-center {
+  font-size: 1.1rem !important;
+}
+
+/* Navbar styling */
+nav, .navbar, header {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+nav a, .navbar a, header a {
+  font-family: 'Kalam', cursive !important;
+  font-size: 1.1rem !important;
+  color: #555 !important;
+  font-weight: 600;
+}
+
+nav a:hover, .navbar a:hover, header a:hover {
+  color: #1a1a1a !important;
+  background: linear-gradient(to top, #fef08a 40%, transparent 40%) !important;
+}
+
+nav a.active, .navbar a.active, header a[aria-current="page"] {
+  color: #555 !important;
+  background: transparent !important;
 }
 
 /* Section headings - Kalam */
