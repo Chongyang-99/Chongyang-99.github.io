@@ -10,8 +10,8 @@ sections:
       username: me
       text: ''
       button:
-        text: Download CV
-        url: uploads/resume.pdf
+        text: ''
+        url: ''
       headings:
         about: ''
         education: ''
@@ -19,22 +19,14 @@ sections:
     design:
       background:
         gradient_mesh:
-          enable: true
+          enable: false
+      spacing:
+        padding: ["0.5rem", 0, 0, 0]
       name:
-        size: md
+        size: xs
       avatar:
         size: medium
         shape: circle
-  - block: markdown
-    content:
-      title: 'Research'
-      subtitle: ''
-      text: |-
-        My research focuses on **Vision-Language-Action (VLA)** models, **3D pre-trained foundation models as world models**, and **dual-arm collaborative manipulation** algorithms, with previous work in human motion capture and crowd analysis.
-
-        I am currently a Research Intern at **Dexmal (原力灵机)**, working on bimanual manipulation policies with 3D representations and large-scale VLA evaluation on real-robot benchmarks.
-    design:
-      columns: '1'
   - block: collection
     id: papers
     content:

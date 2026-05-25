@@ -2,7 +2,7 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Chongyang Xu (许重阳)
+  display: Chongyang Xu
   given: Chongyang
   family: Xu
   alternate: '许重阳'
@@ -11,15 +11,17 @@ name:
 postnominals: []
 status:
   icon: "🤖"
-role: Ph.D. Student
+role: '<span class="role-tagline"><span class="role-icon">🎓</span> Ph.D. Student @ Sichuan University<br><span class="role-icon">🔭</span> Embodied AI Intern @ Tongyi Robotics</span>'
 bio: |
-  Ph.D. student in Computer Science at Sichuan University, researching
-  Vision-Language-Action (VLA) models, 3D foundation models as world models,
-  and dual-arm collaborative manipulation.
+  <span class="bio-hello">Hello! 👋</span>
 
-affiliations:
-  - name: Sichuan University
-    url: https://www.scu.edu.cn/
+  I'm Chongyang, a researcher who's into **physical AI & robotics**, equally passionate about **sports, music, humanities, and sociology**. <span class="bio-quote">I'm doing multimodal learning and reinforcement learning in the grandest simulator of all: *life* — one episode at a time, learning what's worth the strife.</span>
+
+  <span class="bio-hello">Education 🎓</span>
+
+  I've been studying at **Sichuan University** for 7 years and have fallen deeply in love with **Chengdu**. I received my B.Eng. in Software Engineering and am now pursuing my Ph.D. in Computer Science.
+
+affiliations: []
 
 links:
   - icon: at-symbol
@@ -29,21 +31,24 @@ links:
     url: https://scholar.google.com/citations?user=QxfjuDMAAAAJ&hl=zh-CN
   - icon: brands/github
     url: https://github.com/Chongyang-99
+  - icon: academicons/cv
+    url: uploads/resume.pdf
+    label: CV
 
 interests:
-  - Vision-Language-Action (VLA)
-  - 3D Foundation Models as World Models
-  - Dual-arm Collaborative Manipulation
-  - Human Motion Capture
+  - World Action Model
+  - Humanoid Control
+  - Loco-manipulation
 
 education:
-  - degree: Ph.D. in Computer Science and Technology
+  - degree: "Ph.D. in Computer Science and Technology"
     institution: Sichuan University
+    logo: /media/scu-full.png
     start: 2023-09-01
-    summary: |
-      Advisor: Prof. Ziliang Feng. Research focuses on VLA, 3D pre-trained foundation models, and dual-arm collaborative manipulation.
-  - degree: B.Eng. in Software Engineering
+    summary: 'Advisor: <a href="https://cs.scu.edu.cn/info/1279/13685.htm" target="_blank">Prof. Ziliang Feng</a>.'
+  - degree: "B.Eng. in Software Engineering"
     institution: Sichuan University
+    logo: /media/scu-full.png
     start: 2019-09-01
     end: 2023-06-30
 

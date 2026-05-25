@@ -1,0 +1,353 @@
+/* Name heading - Kalam handwriting */
+h1.font-black {
+  font-family: 'Kalam', cursive !important;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-size: 1.6rem !important;
+}
+
+@media (min-width: 640px) {
+  h1.font-black {
+    font-size: 2rem !important;
+  }
+}
+
+/* Chinese name - KaiTi, not Kalam */
+.chinese-name {
+  font-family: 'STKaiti', 'KaiTi', 'AR PL UKai CN', serif !important;
+  font-size: 1.0em;
+  letter-spacing: 0.05em;
+}
+
+/* Role tagline - monospace */
+.role-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.role-icon {
+  font-size: 1.4em;
+  vertical-align: middle;
+}
+
+.role-dot {
+  margin: 0 0.3em;
+  color: #999;
+}
+
+.role-logo {
+  display: inline-block;
+  height: 1.1em;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 0.15em;
+  border-radius: 2px;
+}
+
+/* Hello title at top */
+.hello-title {
+  font-family: 'Kalam', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+/* Reduce spacing globally */
+.resume-biography {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.avatar-wrapper {
+  width: 240px !important;
+  height: 240px !important;
+}
+
+.avatar-wrapper img {
+  width: 240px !important;
+  height: 240px !important;
+}
+
+.avatar-emoji {
+  font-size: 2.2rem !important;
+  width: 55px !important;
+  height: 55px !important;
+  line-height: 55px !important;
+}
+
+section.hbb-section {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.bio-hello {
+  font-family: 'Kalam', cursive;
+  font-size: 1.7rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: -0.5rem;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 85% 5%, rgba(230,90,20,0.85) 0%, rgba(240,130,50,0.55) 20%, rgba(245,170,80,0.3) 40%, transparent 65%),
+    #e8d0a8 !important;
+  background-attachment: fixed !important;
+  background-attachment: fixed !important;
+}
+
+body, .prose, p {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
+  font-family: 'Kalam', cursive !important;
+}
+
+.prose p {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+.bio-quote {
+  font-family: 'Kalam', cursive !important;
+  font-size: 1.05em;
+  color: #555;
+}
+
+/* Bio text wider */
+.bio-text {
+  max-width: 100% !important;
+}
+
+.prose {
+  max-width: 100% !important;
+}
+
+.mb-12 { margin-bottom: 1.5rem !important; }
+.mb-16 { margin-bottom: 2rem !important; }
+.mb-8 { margin-bottom: 1rem !important; }
+
+.container.px-8 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Education - one row: logo | phd | beng */
+.edu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 8px 0;
+  border-top: 1px solid #d4d0c8;
+  border-bottom: 1px solid #d4d0c8;
+}
+
+.edu-logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.edu-content {
+  flex: 1;
+}
+
+.edu-content:last-child {
+  flex: 0.7;
+}
+
+.edu-degree {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.edu-years-inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.71rem;
+  color: #999;
+  letter-spacing: 0.04em;
+}
+
+.edu-vibes {
+  margin-top: 4px;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+}
+
+.edu-summary {
+  font-size: 0.88rem;
+  color: #666;
+}
+
+.edu-summary a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.edu-summary a:hover {
+  text-decoration: underline;
+}
+
+/* Interests label */
+.interests-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.interests-quote {
+  font-family: 'Kalam', cursive;
+  font-size: 1.6rem;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+  margin-top: -0.3rem;
+  margin-bottom: 0;
+}
+
+/* Interests in left column */
+.interests-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+.interest-tag {
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.04);
+  color: #555;
+  border: 1px solid #d4d0c8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.intern-intro {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.intern-intro p {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+/* Internship Timeline */
+.intern-timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  margin-top: 0.5rem;
+}
+
+.intern-line {
+  display: none;
+}
+
+.intern-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  flex: 1;
+  border: none;
+  border-top: 1.5px solid #d4d0c8;
+  border-bottom: 1.5px solid #d4d0c8;
+  padding: 12px 8px;
+  position: relative;
+}
+
+.intern-entry + .intern-entry::before {
+  content: '→';
+  position: absolute;
+  left: -0.8em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: #999;
+  z-index: 2;
+}
+
+.intern-logo {
+  width: auto;
+  height: 40px;
+  max-width: 160px;
+  object-fit: contain;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 8px;
+}
+
+.intern-collab {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.intern-collab a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.intern-collab a:hover {
+  text-decoration: underline;
+}
+
+.intern-emoji-logo {
+  font-size: 2.2rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.pulse-logo {
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { box-shadow: 0 0 0 2px #3b82f6; }
+  50% { box-shadow: 0 0 0 6px rgba(59,130,246,0.25); }
+}
+
+.intern-info {
+  text-align: center;
+}
+
+.intern-org {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.intern-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #999;
+  letter-spacing: 0.03em;
+}
+
+/* Section headings - Kalam */
+h2, h3 {
+  font-family: 'Kalam', cursive !important;
+  font-weight: 600;
+}
