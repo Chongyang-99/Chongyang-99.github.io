@@ -2,7 +2,7 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Chongyang Xu
+  display: Chongyang Xu (许重阳)
   given: Chongyang
   family: Xu
   alternate: '许重阳'
