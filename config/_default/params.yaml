@@ -76,7 +76,7 @@ hugoblox:
   header:
     enable: true
     # Header style variant
-    style: navbar # navbar | navbar-simple | minimal
+    style: minimal # navbar | navbar-simple | minimal
     # Stick to top on scroll
     sticky: true
     # Menu alignment
