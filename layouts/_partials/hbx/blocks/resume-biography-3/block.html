@@ -444,7 +444,7 @@
             {{ with index . "summary" }}{{ $summary = printf "%v" . }}{{ end }}
             <div class="edu-content">
               <div class="edu-degree">{{ $degree }}</div>
-              <div class="edu-years-inline">{{ $start }} — {{ if $end }}{{ $end }}{{ else }}Present{{ end }}</div>
+              <div class="edu-years-inline">{{ $start }} — {{ if $end }}{{ $end }}{{ else }}Present (expected Jun. 2028){{ end }}</div>
               {{ with $summary }}<div class="edu-summary">{{ . | safeHTML }}</div>{{ end }}
               {{ if $end }}
               <div class="edu-vibes">💻 🎮 🏐 🎸 📚 🍜 🌶️</div>
