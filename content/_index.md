@@ -94,7 +94,7 @@ sections:
             <div class="pub-title">Occluded Human Body Capture with Frequency Domain Denoising Prior</div>
             <div class="pub-authors">Buzhen Huang, <span class="pub-self">Chongyang Xu</span>, Wentao Tang, Yuan Shu, Jingyi Ju, Binghui Zuo, Yangang Wang</div>
             <div class="pub-venue"><span class="pub-venue-name">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</span></div>
-            <div class="pub-links"><a class="pub-link" href="https://www.buzhenhuang.com/publications/" target="_blank">Details</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2202.04977" target="_blank">Paper</a></div>
           </div>
         </div>
 
@@ -134,7 +134,7 @@ sections:
             <div class="pub-title">Multi-Scale Hypergraph Relational Reasoning for Weakly Supervised Recognition of Group Activities</div>
             <div class="pub-authors"><span class="pub-self">Chongyang Xu</span>, Runtian Zheng, Ziliang Feng, Chengfang Zhang<sup>†</sup></div>
             <div class="pub-venue"><span class="pub-venue-name">IEEE International Conference on Multimedia and Expo (ICME), 2025</span> <span class="pub-badge">(Oral Presentation)</span></div>
-            <div class="pub-links"><a class="pub-link" href="/publications/icme2025-hypergraph/">Details</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/11209846" target="_blank">Paper</a></div>
           </div>
         </div>
 
@@ -154,7 +154,7 @@ sections:
             <div class="pub-title">Reconstructing Close Human Interaction with Appearance and Proxemics Reasoning</div>
             <div class="pub-authors">Buzhen Huang, Chen Li, <span class="pub-self">Chongyang Xu</span>, Dongyue Lu, Jinnan Chen, Yangang Wang, Gim Hee Lee</div>
             <div class="pub-venue"><span class="pub-venue-name">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</span></div>
-            <div class="pub-links"><a class="pub-link" href="/publications/cvpr2025-close-interaction/">Details</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2507.02565" target="_blank">Paper</a></div>
           </div>
         </div>
 
@@ -164,7 +164,7 @@ sections:
             <div class="pub-title">Closely Interactive Human Reconstruction with Proxemics and Physics-Guided Adaption</div>
             <div class="pub-authors">Buzhen Huang, Chen Li, <span class="pub-self">Chongyang Xu</span>, Liang Pan, Yangang Wang, Gim Hee Lee</div>
             <div class="pub-venue"><span class="pub-venue-name">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2024</span></div>
-            <div class="pub-links"><a class="pub-link" href="/publications/cvpr2024-closely-interactive/">Details</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2408.03453" target="_blank">Paper</a></div>
           </div>
         </div>
 
