@@ -201,7 +201,7 @@ h1.font-black, h2, h3, .bio-hello, .interests-quote, .interests-label {
 /* Interests label */
 .interests-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   color: #666;
   text-align: center;
   margin-top: 0.2rem;
@@ -232,10 +232,14 @@ a[title="WeChat: godxzp"]:hover::after {
 
 .visitor-badge {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-top: 0.5rem;
+}
+.visitor-badge img {
+  height: 20px;
 }
 
 .interests-quote {
