@@ -685,8 +685,107 @@ nav a.active, .navbar a.active, header a[aria-current="page"] {
   background: transparent !important;
 }
 
+/* Collaboration CTA */
+.collab-cta {
+  display: block;
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-top: 0.3rem;
+}
+
 /* Section headings - Kalam */
 h2, h3 {
   font-family: 'Kalam', cursive !important;
   font-weight: 600;
+}
+
+/* Blogs section */
+#blogs {
+  margin-top: 3rem !important;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.blog-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  padding: 3px 10px;
+  border: 1px solid #d4d0c8;
+  border-radius: 3px;
+  background: #f0ede8;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.blog-tag:hover {
+  background: #e0ddd8;
+  border-color: #999;
+}
+
+.blog-tag.active {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+
+.blog-list {
+  padding: 0;
+}
+
+.blog-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #a89878;
+  font-size: 1.05rem;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.blog-item:first-child {
+  border-top: 1px solid #a89878;
+}
+
+.blog-item:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+.blog-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #999;
+  min-width: 5em;
+  flex-shrink: 0;
+}
+
+.blog-title-text {
+  font-weight: 600;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.blog-item-tags {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.blog-item-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.04);
+  color: #888;
+  border: 1px solid #d4d0c8;
 }

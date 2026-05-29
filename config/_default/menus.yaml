@@ -11,3 +11,6 @@ main:
   - name: Honors
     url: /#honors
     weight: 40
+  - name: Blogs
+    url: /#blogs
+    weight: 50

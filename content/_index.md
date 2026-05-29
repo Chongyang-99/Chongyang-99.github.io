@@ -197,4 +197,50 @@ sections:
         </div>
     design:
       columns: '1'
+  - block: markdown
+    id: blogs
+    content:
+      title: ''
+      text: |-
+        <span class="bio-hello">Blogs ✍️</span>
+
+        <div class="blog-tags" id="blog-tag-filter">
+        <span class="blog-tag active" data-tag="all">All</span>
+        <span class="blog-tag" data-tag="robotics">Robotics</span>
+        <span class="blog-tag" data-tag="research">Research</span>
+        <span class="blog-tag" data-tag="wam">WAM</span>
+        <span class="blog-tag" data-tag="humanoid">Humanoid</span>
+        <span class="blog-tag" data-tag="loco-manipulation">Loco-Manipulation</span>
+        </div>
+
+        <div class="blog-list">
+        <a class="blog-item" href="/blog/hello-world/" data-tags="robotics research">
+        <span class="blog-date">2026.05</span>
+        <span class="blog-title-text">Hello World</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span></span>
+        </a>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var tags = document.querySelectorAll('.blog-tag');
+          var items = document.querySelectorAll('.blog-item');
+          tags.forEach(function(tag) {
+            tag.addEventListener('click', function() {
+              tags.forEach(function(t) { t.classList.remove('active'); });
+              tag.classList.add('active');
+              var sel = tag.getAttribute('data-tag');
+              items.forEach(function(item) {
+                if (sel === 'all' || item.getAttribute('data-tags').indexOf(sel) !== -1) {
+                  item.style.display = '';
+                } else {
+                  item.style.display = 'none';
+                }
+              });
+            });
+          });
+        });
+        </script>
+    design:
+      columns: '1'
 ---
