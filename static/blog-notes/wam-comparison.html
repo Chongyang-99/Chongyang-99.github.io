@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAM 横向对比表</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400&display=swap');
+:root { --bg: #fdf8f0; --text: #2c2c2c; --accent: #c17038; --accent-light: #faf0e6; --border: #ddd; --gray: #666; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Serif SC', 'Songti SC', serif; background: radial-gradient(ellipse at 85% 5%, rgba(230,90,20,0.15) 0%, rgba(240,130,50,0.08) 20%, rgba(245,170,80,0.04) 40%, transparent 65%), var(--bg); background-attachment: fixed; color: var(--text); line-height: 1.8; font-size: 16px; }
+main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 2px solid var(--accent); }
+h1 { font-size: 28px; line-height: 1.3; margin-bottom: 8px; }
+.subtitle { font-size: 15px; color: var(--gray); margin-bottom: 4px; }
+.meta { font-size: 13px; color: var(--gray); } .meta a { color: var(--accent); }
+h2 { font-size: 22px; margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--accent); }
+h3 { font-size: 18px; margin-top: 28px; margin-bottom: 12px; }
+p { margin-bottom: 14px; }
+ul { margin: 12px 0 12px 24px; } li { margin-bottom: 6px; }
+
+.table-wrap { overflow-x: auto; margin: 20px 0; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; font-size: 13px; min-width: 1100px; width: 100%; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: center; vertical-align: middle; }
+th { background: var(--accent); color: #fff; font-weight: 700; position: sticky; top: 0; z-index: 2; font-size: 12px; }
+th.row-header { background: var(--accent-light); color: var(--text); text-align: left; font-weight: 700; min-width: 100px; position: sticky; left: 0; z-index: 3; }
+td.row-header { background: var(--accent-light); text-align: left; font-weight: 700; position: sticky; left: 0; z-index: 1; white-space: nowrap; }
+td a { color: var(--accent); text-decoration: none; font-weight: 700; }
+td a:hover { text-decoration: underline; }
+tr:hover td { background: rgba(193,112,56,0.06); }
+tr:hover td.row-header { background: #f5e6d6; }
+.best { font-weight: 700; color: var(--accent); }
+.na { color: #bbb; font-style: italic; }
+.tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin: 1px; }
+.tag-ar { background: #e8f0e8; color: #2d6a2d; }
+.tag-bi { background: #e8e8f0; color: #2d2d6a; }
+.tag-cas { background: #f0e8e8; color: #6a2d2d; }
+.tag-mot { background: #f0ece8; color: #6a4a2d; }
+
+svg { max-width: 100%; height: auto; margin: 24px auto; display: block; }
+
+.insight-box { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+.insight-box strong { color: var(--accent); }
+
+@media (max-width: 768px) {
+  main { padding: 20px 12px 60px; }
+  table { font-size: 11px; }
+  th, td { padding: 5px 6px; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>World Action Models 横向对比</h1>
+  <p class="subtitle">10 篇 WAM 论文的架构、性能、速度、数据全方位对比</p>
+  <p class="meta">2026-05-31 · 基于 <a href="/blog-notes/wam-survey.html">WAM Survey</a> 整理</p>
+</header>
+
+<section>
+<h2>一、基本信息对比</h2>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>时间</th>
+  <th>机构</th>
+  <th>Backbone</th>
+  <th>参数量</th>
+  <th>架构类型</th>
+  <th>核心创新</th>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/pad.html">PAD</a></td>
+  <td>2024.11</td>
+  <td>清华/上海<br>Berkeley</td>
+  <td>DiT (ImageNet)</td>
+  <td>661M</td>
+  <td><span class="tag tag-bi">双向扩散</span></td>
+  <td>首个联合图像-动作去噪</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/uwm.html">UWM</a></td>
+  <td>2025.04</td>
+  <td>UW / TRI</td>
+  <td>DiT + SDXL VAE</td>
+  <td>~300M</td>
+  <td><span class="tag tag-bi">双向扩散</span></td>
+  <td>独立时间步，一模型四用</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/motus.html">Motus</a></td>
+  <td>2025.12</td>
+  <td>清华 / 北大<br>Horizon Robotics</td>
+  <td>Video Gen 5B<br>+ VLM 2.1B</td>
+  <td>~8B</td>
+  <td><span class="tag tag-mot">MoT 多流</span></td>
+  <td>光流潜在动作 + 六层数据金字塔</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/cosmos-policy.html">Cosmos Policy</a></td>
+  <td>2026.01</td>
+  <td>NVIDIA / Stanford</td>
+  <td>Cosmos-Predict2-2B</td>
+  <td>2B</td>
+  <td><span class="tag tag-bi">双向扩散</span></td>
+  <td>Latent frame injection，零架构修改</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/lingbot-va.html">LingBot-VA</a></td>
+  <td>2026.01</td>
+  <td>Ant Group<br>(蚂蚁 Robbyant)</td>
+  <td>Wan2.2-5B</td>
+  <td>5.3B</td>
+  <td><span class="tag tag-ar">自回归扩散</span></td>
+  <td>因果 KV cache + Noisy History Aug.</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/dreamzero.html">DreamZero</a></td>
+  <td>2026.02</td>
+  <td>NVIDIA</td>
+  <td>Wan2.1-I2V-14B</td>
+  <td>14B</td>
+  <td><span class="tag tag-ar">自回归扩散</span></td>
+  <td>14B WAM + 38x 推理加速 + 零样本泛化</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/dit4dit.html">DiT4DiT</a></td>
+  <td>2026.03</td>
+  <td>Mondo Robotics<br>HKUST(GZ)</td>
+  <td>Cosmos-Predict2.5-2B</td>
+  <td>~2.2B</td>
+  <td><span class="tag tag-cas">级联双 DiT</span></td>
+  <td>从视频去噪中间层提取控制特征</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/fastwam.html">Fast-WAM</a></td>
+  <td>2026.03</td>
+  <td>清华 IIIS<br>Galaxea AI</td>
+  <td>Wan2.2-5B</td>
+  <td>~6B</td>
+  <td><span class="tag tag-mot">MoT 多流</span></td>
+  <td>训练时想象、推理时跳过</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/gigaworld-policy.html">GigaWorld</a></td>
+  <td>2026.03</td>
+  <td>GigaAI</td>
+  <td>Wan2.2-5B</td>
+  <td>5B</td>
+  <td><span class="tag tag-mot">因果 MoT</span></td>
+  <td>Action-centered + 因果掩码保证</td>
+</tr>
+<tr>
+  <td class="row-header"><a href="/blog-notes/xwam.html">X-WAM</a></td>
+  <td>2026.04</td>
+  <td>清华</td>
+  <td>Wan2.2-5B</td>
+  <td>~5B</td>
+  <td><span class="tag tag-bi">双向扩散</span></td>
+  <td>4D (多视角 RGB-D) + ANS 异步噪声</td>
+</tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>二、Benchmark 性能对比</h2>
+<p>同一 benchmark 的数字来自各论文自报结果，评估协议可能存在差异（示范数量、种子数、OOD 设置等），<strong>仅供参考趋势</strong>。</p>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>LIBERO<br>(4-suite avg)</th>
+  <th>RoboCasa<br>(24 tasks)</th>
+  <th>RoboTwin 2.0<br>(50+ tasks)</th>
+  <th>真实机器人</th>
+  <th>跨具身迁移</th>
+</tr>
+<tr>
+  <td class="row-header">PAD</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>Metaworld 72.5%<br>Real 78% (w/ depth)</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">UWM</td>
+  <td>79% (OOD)</td>
+  <td>60.8%</td>
+  <td>—</td>
+  <td>OOD 0.72-0.84</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">Motus</td>
+  <td>97.7%</td>
+  <td>—</td>
+  <td>88.7% / 87.0%</td>
+  <td>59-63%</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">Cosmos Policy</td>
+  <td class="best">98.5%</td>
+  <td>67.1%</td>
+  <td>—</td>
+  <td>ALOHA 93.6%</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">LingBot-VA</td>
+  <td class="best">98.5%</td>
+  <td>—</td>
+  <td class="best">92.9% / 91.6%</td>
+  <td>SOTA (6 tasks)</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">DreamZero</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td>Seen 62.2%<br>Unseen 39.5%</td>
+  <td class="best">30min 适配新平台<br>视频迁移 +42%</td>
+</tr>
+<tr>
+  <td class="row-header">DiT4DiT</td>
+  <td class="best">98.6%</td>
+  <td>50.8%<br>(GR1 split)</td>
+  <td>—</td>
+  <td>Unitree G1 SOTA</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">Fast-WAM</td>
+  <td>97.6%</td>
+  <td>—</td>
+  <td>91.8%</td>
+  <td>~75% (towel)</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">GigaWorld</td>
+  <td>—</td>
+  <td>—</td>
+  <td>87% / 85%</td>
+  <td>83%</td>
+  <td class="na">—</td>
+</tr>
+<tr>
+  <td class="row-header">X-WAM</td>
+  <td>—</td>
+  <td class="best">79.2%</td>
+  <td>89.8% / <span class="best">90.7%</span></td>
+  <td>双臂耳机包装</td>
+  <td class="na">—</td>
+</tr>
+</table>
+</div>
+
+<svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <text x="390" y="25" text-anchor="middle" font-size="16" font-weight="bold">LIBERO 4-suite 平均成功率对比</text>
+  <text x="390" y="45" text-anchor="middle" font-size="11" fill="#999">仅列出报告了该 benchmark 的论文；评估设置可能不完全一致</text>
+  <line x1="160" y1="65" x2="160" y2="310" stroke="#ddd"/>
+  <!-- UWM -->
+  <rect x="160" y="75" width="240" height="28" fill="#d4a574" rx="3"/>
+  <text x="155" y="94" text-anchor="end" font-size="13">UWM</text>
+  <text x="408" y="94" font-size="12" fill="#555">79.0%</text>
+  <!-- Fast-WAM -->
+  <rect x="160" y="115" width="297" height="28" fill="#d4a574" rx="3"/>
+  <text x="155" y="134" text-anchor="end" font-size="13">Fast-WAM</text>
+  <text x="465" y="134" font-size="12" fill="#555">97.6%</text>
+  <!-- Motus -->
+  <rect x="160" y="155" width="297" height="28" fill="#d4a574" rx="3"/>
+  <text x="155" y="174" text-anchor="end" font-size="13">Motus (Long)</text>
+  <text x="465" y="174" font-size="12" fill="#555">97.6%</text>
+  <!-- Cosmos Policy -->
+  <rect x="160" y="195" width="300" height="28" fill="#c17038" rx="3"/>
+  <text x="155" y="214" text-anchor="end" font-size="13">Cosmos Policy</text>
+  <text x="468" y="214" font-size="12" font-weight="bold" fill="#c17038">98.5%</text>
+  <!-- LingBot-VA -->
+  <rect x="160" y="235" width="300" height="28" fill="#c17038" rx="3"/>
+  <text x="155" y="254" text-anchor="end" font-size="13">LingBot-VA</text>
+  <text x="468" y="254" font-size="12" font-weight="bold" fill="#c17038">98.5%</text>
+  <!-- DiT4DiT -->
+  <rect x="160" y="275" width="301" height="28" fill="#c17038" rx="3"/>
+  <text x="155" y="294" text-anchor="end" font-size="13" font-weight="bold">DiT4DiT</text>
+  <text x="469" y="294" font-size="12" font-weight="bold" fill="#c17038">98.6%</text>
+  <text x="390" y="340" text-anchor="middle" font-size="11" fill="#999">Source: 各论文自报数据</text>
+</svg>
+</section>
+
+<section>
+<h2>三、推理效率对比</h2>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>推理延迟</th>
+  <th>控制频率</th>
+  <th>推理时是否<br>生成视频</th>
+  <th>加速手段</th>
+</tr>
+<tr>
+  <td class="row-header">PAD</td>
+  <td>未报告 (75-step DDIM)</td>
+  <td>未报告</td>
+  <td>是（联合去噪）</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="row-header">UWM</td>
+  <td>未报告</td>
+  <td>10Hz (机器人端)</td>
+  <td>策略模式下否</td>
+  <td>独立时间步可跳过视频</td>
+</tr>
+<tr>
+  <td class="row-header">Motus</td>
+  <td>3231ms</td>
+  <td>~0.3Hz</td>
+  <td>是</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="row-header">Cosmos Policy</td>
+  <td>1413ms</td>
+  <td>~0.7Hz</td>
+  <td>策略模式下否<br>Planning 模式是</td>
+  <td>并行解码 / N-GPU planning</td>
+</tr>
+<tr>
+  <td class="row-header">LingBot-VA</td>
+  <td>未报告 (异步隐藏)</td>
+  <td>50Hz (动作)<br>12.5Hz (视频)</td>
+  <td>是（自回归）</td>
+  <td>KV cache + Noisy Aug (半步去噪)</td>
+</tr>
+<tr>
+  <td class="row-header">DreamZero</td>
+  <td class="best">~150ms (Flash)</td>
+  <td class="best">7Hz</td>
+  <td>是（但异步执行）</td>
+  <td>CFG并行 + DiT cache + 量化<br>+ Flash (Beta 噪声调度) = 38x</td>
+</tr>
+<tr>
+  <td class="row-header">DiT4DiT</td>
+  <td>~167ms (A100)</td>
+  <td>6Hz</td>
+  <td>仅 1 步前向提取特征</td>
+  <td>单步特征提取 (非迭代去噪)</td>
+</tr>
+<tr>
+  <td class="row-header">Fast-WAM</td>
+  <td class="best">190ms</td>
+  <td>~5Hz</td>
+  <td><strong>否</strong></td>
+  <td>推理时完全跳过视频分支</td>
+</tr>
+<tr>
+  <td class="row-header">GigaWorld</td>
+  <td>360ms (A100)</td>
+  <td>~3Hz</td>
+  <td><strong>否</strong>（因果掩码保证）</td>
+  <td>因果 mask → 推理时丢弃视频 token</td>
+</tr>
+<tr>
+  <td class="row-header">X-WAM</td>
+  <td>1033ms (RTX 3090)</td>
+  <td>~1Hz</td>
+  <td>是（ANS 异步）</td>
+  <td>ANS: 动作 5 步出，视频 25 步慢跑</td>
+</tr>
+</table>
+</div>
+
+<svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg" style="font-family: inherit;">
+  <text x="390" y="25" text-anchor="middle" font-size="16" font-weight="bold">推理延迟对比 (ms, 越低越好)</text>
+  <line x1="160" y1="55" x2="160" y2="275" stroke="#ddd"/>
+  <rect x="160" y="60" width="28" height="26" fill="#2d6a2d" rx="3"/>
+  <text x="155" y="78" text-anchor="end" font-size="12" font-weight="bold">DreamZero-Flash</text>
+  <text x="196" y="78" font-size="11" fill="#2d6a2d">150ms</text>
+  <rect x="160" y="95" width="32" height="26" fill="#2d6a2d" rx="3"/>
+  <text x="155" y="113" text-anchor="end" font-size="12">DiT4DiT</text>
+  <text x="200" y="113" font-size="11" fill="#2d6a2d">167ms</text>
+  <rect x="160" y="130" width="35" height="26" fill="#4a8a4a" rx="3"/>
+  <text x="155" y="148" text-anchor="end" font-size="12">Fast-WAM</text>
+  <text x="203" y="148" font-size="11" fill="#4a8a4a">190ms</text>
+  <rect x="160" y="165" width="63" height="26" fill="#d4a574" rx="3"/>
+  <text x="155" y="183" text-anchor="end" font-size="12">GigaWorld</text>
+  <text x="231" y="183" font-size="11" fill="#555">360ms</text>
+  <rect x="160" y="200" width="180" height="26" fill="#c44" rx="3"/>
+  <text x="155" y="218" text-anchor="end" font-size="12">X-WAM</text>
+  <text x="348" y="218" font-size="11" fill="#c44">1033ms</text>
+  <rect x="160" y="235" width="245" height="26" fill="#c44" rx="3"/>
+  <text x="155" y="253" text-anchor="end" font-size="12">Cosmos Policy</text>
+  <text x="413" y="253" font-size="11" fill="#c44">1413ms</text>
+  <rect x="160" y="270" width="560" height="26" fill="#933" rx="3"/>
+  <text x="155" y="288" text-anchor="end" font-size="12">Motus</text>
+  <text x="728" y="288" font-size="11" fill="#933">3231ms</text>
+  <line x1="160" y1="305" x2="720" y2="305" stroke="#ddd"/>
+  <text x="160" y="325" font-size="10" fill="#999">0</text>
+  <text x="333" font-size="10" fill="#999" y="325">1000</text>
+  <text x="506" font-size="10" fill="#999" y="325">2000</text>
+  <text x="680" font-size="10" fill="#999" y="325">3000ms</text>
+  <text x="390" y="350" text-anchor="middle" font-size="11" fill="#999">绿色 = 可实时 (&lt;200ms) · 橙色 = 勉强可用 · 红色 = 离线/异步</text>
+</svg>
+</section>
+
+<section>
+<h2>四、训练数据与效率对比</h2>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>预训练 Backbone</th>
+  <th>机器人数据量</th>
+  <th>额外视频数据</th>
+  <th>训练硬件</th>
+  <th>数据效率特点</th>
+</tr>
+<tr>
+  <td class="row-header">PAD</td>
+  <td>ImageNet DiT</td>
+  <td>BridgeData-v2 (60K 条)</td>
+  <td>可混入纯视频</td>
+  <td>4x A100, 3 天</td>
+  <td>50 条/任务即可</td>
+</tr>
+<tr>
+  <td class="row-header">UWM</td>
+  <td>无 (从头)</td>
+  <td>DROID 2000 条</td>
+  <td>2000 条无标注视频</td>
+  <td>4× A100, 24h</td>
+  <td>协同训练 OOD +4-12pts</td>
+</tr>
+<tr>
+  <td class="row-header">Motus</td>
+  <td>Video Gen 5B + VLM 2.1B</td>
+  <td>多源（六层金字塔）</td>
+  <td>互联网视频 + 人类视频</td>
+  <td>~18K GPU·h<br>(Stage1 8K + Stage2 10K)</td>
+  <td>光流消除标注需求</td>
+</tr>
+<tr>
+  <td class="row-header">Cosmos Policy</td>
+  <td>Cosmos-Predict2-2B</td>
+  <td class="best">50 条示范 (RoboCasa)</td>
+  <td>预训练含</td>
+  <td>64× H100, 48h<br>(40K steps, bs 1920)</td>
+  <td class="best">极高数据效率</td>
+</tr>
+<tr>
+  <td class="row-header">LingBot-VA</td>
+  <td>Wan2.2-5B</td>
+  <td>16K 小时</td>
+  <td>含在预训练</td>
+  <td>1.4T tokens 预训练<br>(GPU 型号未披露)</td>
+  <td>10 条示范 +15.6%</td>
+</tr>
+<tr>
+  <td class="row-header">DreamZero</td>
+  <td>Wan2.1-I2V-14B</td>
+  <td>~500 小时 (AgiBot)</td>
+  <td>视频迁移 10-20min</td>
+  <td>H100 / GB200<br>(100K steps, bs 128)</td>
+  <td>30min play data 适配新平台</td>
+</tr>
+<tr>
+  <td class="row-header">DiT4DiT</td>
+  <td>Cosmos-Predict2.5-2B</td>
+  <td>—</td>
+  <td>预训练含</td>
+  <td>32 GPU, 100K steps<br>(bs 8/GPU)</td>
+  <td>10x 样本效率提升</td>
+</tr>
+<tr>
+  <td class="row-header">Fast-WAM</td>
+  <td>Wan2.2-5B</td>
+  <td>—</td>
+  <td>视频共训练（必须）</td>
+  <td>推理: RTX 5090D<br>(训练配置未披露)</td>
+  <td>去掉视频训练崩到 10%</td>
+</tr>
+<tr>
+  <td class="row-header">GigaWorld</td>
+  <td>Wan2.2-5B</td>
+  <td>~10K 小时 (Table 1)</td>
+  <td>含 egocentric 人类视频</td>
+  <td>6000 GPU·h, bs 256<br>(推理: A100)</td>
+  <td>stride-12 未来帧足够</td>
+</tr>
+<tr>
+  <td class="row-header">X-WAM</td>
+  <td>Wan2.2-5B</td>
+  <td>5800+ 小时</td>
+  <td>含在数据混合</td>
+  <td>256× H20, 40K steps<br>(bs 2048; 微调: 32× H20)</td>
+  <td>大规模数据驱动</td>
+</tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>4.5、开源与部署</h2>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>Action Chunk</th>
+  <th>去噪步数</th>
+  <th>代码开源</th>
+  <th>权重开源</th>
+  <th>项目页面</th>
+</tr>
+<tr>
+  <td class="row-header">PAD</td><td>k=3, interval=4</td><td>75 (DDIM)</td><td>—</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">UWM</td><td>可变 h_a</td><td>—</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://weirdlabuw.github.io/uwm/">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">Motus</td><td>16</td><td>—</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://motus-robotics.github.io/motus">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">Cosmos Policy</td><td>50 @ 25Hz (2s)</td><td>—</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://research.nvidia.com/labs/dir/cosmos-policy/">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">LingBot-VA</td><td>K∈[1,4] (可变)</td><td>partial (s=0.5)</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://github.com/robbyant/lingbot-va">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">DreamZero</td><td>48 @ 30Hz (1.6s)</td><td>16→1 (Flash)</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://dreamzero0.github.io">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">DiT4DiT</td><td>—</td><td>1 (特征提取)</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://dit4dit.github.io/">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">Fast-WAM</td><td>—</td><td>推理时 0 (跳过视频)</td><td class="best">Yes</td><td class="best">Yes</td><td><a href="https://yuantianyuan01.github.io/FastWAM/">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">GigaWorld</td><td>p=48, Δ=12</td><td>推理时仅动作</td><td class="best">Yes</td><td>—</td><td><a href="https://gigaai-research.github.io/GigaWorld-Policy/">Link</a></td>
+</tr>
+<tr>
+  <td class="row-header">X-WAM</td><td>K=32 actions, H=8 frames</td><td>5 (action) / 25 (video)</td><td class="best">Yes</td><td>—</td><td><a href="https://sharinka0715.github.io/X-WAM/">Link</a></td>
+</tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>五、设计维度总览</h2>
+<div class="table-wrap">
+<table>
+<tr>
+  <th class="row-header">论文</th>
+  <th>视频预测<br>在推理时</th>
+  <th>时间步<br>设计</th>
+  <th>多模态<br>注入方式</th>
+  <th>World Model<br>能力</th>
+  <th>Planning<br>能力</th>
+  <th>3D/Depth</th>
+</tr>
+<tr>
+  <td class="row-header">PAD</td><td>需要</td><td>共享</td><td>Channel 拼接</td><td>隐式</td><td>—</td><td>可选深度</td>
+</tr>
+<tr>
+  <td class="row-header">UWM</td><td>可跳过</td><td class="best">独立</td><td>Token 拼接</td><td>4 种模式</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">Motus</td><td>需要</td><td>UniDiffuser</td><td>MoT</td><td>5 种模式</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">Cosmos Policy</td><td>可跳过</td><td>共享</td><td class="best">Latent Frame</td><td>显式</td><td class="best">Best-of-N</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">LingBot-VA</td><td>需要</td><td>共享 (AR)</td><td>交错序列</td><td>隐式</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">DreamZero</td><td>需要 (异步)</td><td>共享 + Flash</td><td>独立头</td><td>隐式</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">DiT4DiT</td><td>1 步特征</td><td>三时间步</td><td>Cross-attn</td><td>隐式</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">Fast-WAM</td><td class="best">完全跳过</td><td>共享</td><td>MoT</td><td>训练时用</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">GigaWorld</td><td class="best">完全跳过</td><td>共享</td><td>因果 MoT</td><td>训练时用</td><td>—</td><td>—</td>
+</tr>
+<tr>
+  <td class="row-header">X-WAM</td><td>需要 (ANS)</td><td>ANS 联合</td><td>Token + 深度分支</td><td>显式 4D</td><td>—</td><td class="best">RGB-D 多视角</td>
+</tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>六、关键发现与趋势</h2>
+
+<div class="insight-box">
+<strong>发现 1：视频预测的价值在训练，不在推理。</strong><br>
+PAD 的消融（-28.9pts）、Fast-WAM 的消融（真实世界 75%→10%）、GigaWorld 的消融（83%→65%）一致表明：视频预测作为训练时的辅助任务对表征学习至关重要，但推理时跳过视频生成不损失甚至提升性能。
+</div>
+
+<div class="insight-box">
+<strong>发现 2：预训练视频模型的 backbone 越大，泛化越强。</strong><br>
+PAD (661M, ImageNet) → UWM (~300M, 从头) → Cosmos Policy (2B, Cosmos) → DreamZero (14B, Wan2.1)。随着 backbone 规模和预训练数据量增加，零样本泛化能力从"没有"变成"可用"（DreamZero 未见任务 39.5%）。
+</div>
+
+<div class="insight-box">
+<strong>发现 3：独立时间步 / 异步噪声是灵活性的关键。</strong><br>
+UWM 的独立时间步设计开创了"一个模型多种推理模式"的范式，被 DreamZero（Flash）、X-WAM（ANS）、Motus（UniDiffuser 调度）等后续工作广泛采用或变体。
+</div>
+
+<div class="insight-box">
+<strong>发现 4：数据多样性 &gt; 数据重复性。</strong><br>
+DreamZero 用 500 小时异构数据（42 种技能 × 22 环境）超过了在数千小时重复示范上预训练的 VLA。Motus 的六层数据金字塔进一步证明了分层利用异构数据的价值。
+</div>
+
+<div class="insight-box">
+<strong>趋势：WAM 正在分化为两条路线。</strong><br>
+<strong>路线 A "大而全"</strong>：DreamZero (14B)、Motus (8B)、LingBot-VA (5.3B) 追求零样本泛化和跨具身迁移，代价是推理慢。<br>
+<strong>路线 B "快而准"</strong>：Fast-WAM、GigaWorld、DiT4DiT 保留训练时视频监督但推理时跳过，追求实时控制（150-360ms），代价是泛化能力有限。
+</div>
+</section>
+
+</main>
+</body>
+</html>

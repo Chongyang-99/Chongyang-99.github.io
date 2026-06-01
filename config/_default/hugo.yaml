@@ -59,6 +59,17 @@ markup:
   _merge: deep
   highlight:
     lineNos: false
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+            - - "$$"
+              - "$$"
+          inline:
+            - - "$"
+              - "$"
+        enable: true
 security:
   _merge: deep
 sitemap:
