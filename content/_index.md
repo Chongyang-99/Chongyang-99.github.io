@@ -211,65 +211,9 @@ sections:
         <span class="blog-tag" data-tag="wam">WAM</span>
         <span class="blog-tag" data-tag="humanoid">Humanoid</span>
         <span class="blog-tag" data-tag="loco-manipulation">Loco-Manipulation</span>
-        <span class="blog-tag" data-tag="diffusion">Diffusion</span>
         </div>
 
         <div class="blog-list">
-        <a class="blog-item" href="/blog-notes/wam-comparison.html" data-tags="robotics wam research">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">WAM 横向对比表</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Research</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/motus.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">Motus 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/lingbot-va.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">LingBot-VA 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/dit4dit.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">DiT4DiT 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/fastwam.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">Fast-WAM 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/gigaworld-policy.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">GigaWorld-Policy 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/xwam.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">X-WAM 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/cosmos-policy.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">Cosmos Policy 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/dreamzero.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">DreamZero 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/uwm.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">UWM 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
-        <a class="blog-item" href="/blog-notes/pad.html" data-tags="robotics wam diffusion">
-        <span class="blog-date">2026.05</span>
-        <span class="blog-title-text">PAD 阅读笔记</span>
-        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">WAM</span><span class="blog-item-tag">Diffusion</span></span>
-        </a>
         <a class="blog-item" href="/blog-notes/wam-survey.html" data-tags="robotics research wam">
         <span class="blog-date">2026.05</span>
         <span class="blog-title-text">World Action Models Survey 阅读笔记</span>
