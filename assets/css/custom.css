@@ -789,3 +789,187 @@ h2, h3 {
   color: #888;
   border: 1px solid #d4d0c8;
 }
+
+/* ========== Mobile Responsive ========== */
+@media (max-width: 768px) {
+  html {
+    zoom: 1;
+  }
+
+  .avatar-wrapper,
+  .avatar-wrapper img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .avatar-emoji {
+    font-size: 1.6rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+
+  /* Education: stack vertically */
+  .edu-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    padding: 16px 12px;
+  }
+
+  .edu-logo {
+    width: 160px;
+    margin-bottom: 4px;
+  }
+
+  .edu-content {
+    width: 100%;
+    flex: none;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #d4c5a9;
+  }
+
+  .edu-content:last-child {
+    flex: none;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .edu-degree {
+    font-size: 1rem;
+  }
+
+  .edu-years-inline {
+    font-size: 0.78rem;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .edu-summary {
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  .edu-vibes {
+    margin-top: 6px;
+  }
+
+  /* Internship timeline: vertical stack, centered */
+  .intern-timeline {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    max-width: 300px;
+    margin: 0.5rem auto 0;
+  }
+
+  .intern-entry {
+    min-height: auto;
+    padding: 14px 8px;
+    border-top: none;
+    border-bottom: 1.5px solid #a89878;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intern-info {
+    text-align: center;
+  }
+
+  .intern-entry:first-child {
+    border-top: 1.5px solid #a89878;
+  }
+
+  .intern-entry + .intern-entry::before {
+    content: '↓';
+    position: static;
+    display: block;
+    transform: none;
+    font-size: 1.2rem;
+    color: #999;
+    margin: -8px auto 4px;
+    text-align: center;
+    left: auto;
+    top: auto;
+  }
+
+  .intern-logo {
+    height: 32px;
+    max-width: 120px;
+  }
+
+  /* News: single column */
+  .news-list {
+    column-count: 1;
+  }
+
+  /* Publications: stack thumb + body */
+  .pub-item {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .pub-thumb {
+    width: 100%;
+  }
+
+  .pub-thumb img {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .pub-title {
+    font-size: 1.1rem;
+  }
+
+  .pub-authors,
+  .pub-venue {
+    font-size: 1.1rem;
+  }
+
+  /* Certificate gallery: 1 column */
+  .cert-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card img {
+    height: 140px;
+  }
+
+  /* Blog items: wrap on mobile */
+  .blog-item {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .blog-item-tags {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Navbar font size */
+  nav a, .navbar a, header a {
+    font-size: 0.95rem !important;
+  }
+
+  /* Section headings */
+  .interests-label,
+  .interests-quote {
+    font-size: 1.2rem;
+  }
+
+  .hello-title {
+    font-size: 1.4rem;
+  }
+
+  .bio-hello {
+    font-size: 1.3rem;
+  }
+
+  /* Reduce canvas robots on mobile via CSS (JS handles count) */
+  #tech-bg {
+    opacity: 0.5;
+  }
+}

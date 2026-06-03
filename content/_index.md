@@ -214,6 +214,11 @@ sections:
         </div>
 
         <div class="blog-list">
+        <a class="blog-item" href="/blog-notes/wam-deep-comparison.html" data-tags="robotics research wam">
+        <span class="blog-date">2026.06</span>
+        <span class="blog-title-text">WAM 论文深度横向对比</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">WAM</span></span>
+        </a>
         <a class="blog-item" href="/blog-notes/wam-survey.html" data-tags="robotics research wam">
         <span class="blog-date">2026.05</span>
         <span class="blog-title-text">World Action Models Survey 阅读笔记</span>
