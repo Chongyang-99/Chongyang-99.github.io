@@ -47,6 +47,7 @@ blockquote .quote-zh { color: var(--text); font-size: 16px; }
 blockquote hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
 .qa-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
 .qa-question { padding: 14px 18px; cursor: pointer; font-weight: 700; background: var(--accent-light); font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+.qa-question .katex { display: inline; }
 .qa-question::after { content: "\25B8"; transition: transform 0.3s; font-size: 14px; color: var(--accent); }
 .qa-item.open .qa-question::after { transform: rotate(90deg); }
 .qa-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-size: 16px; line-height: 1.7; }
@@ -320,7 +321,7 @@ $$\mathcal{L}_{\text{diff}}^\delta(\theta) = \mathbb{E}_{\epsilon^\delta \sim \m
 </div>
 
 <div class="qa-item">
-<div class="qa-question">Q3：$\lambda_A$ 从 0 线性增到 2.0 的 warmup 策略为什么有效？</div>
+<div class="qa-question">Q3：λ_A 从 0 线性增到 2.0 的 warmup 策略为什么有效？</div>
 <div class="qa-answer">
 <p>如果一上来就同时训练图像和动作，两个目标会互相拉扯，容易不收敛。所以先让模型专注学好图像预测（$\lambda_A = 0$ 时模型只做图像去噪），等物理理解的"地基"打好，再逐步加入动作学习的压力。$\lambda_A$ 最终升到 2.0（超过 $\lambda_I = 1.0$），是因为最终目的是控制，后期需要让动作损失主导梯度方向。</p>
 </div>

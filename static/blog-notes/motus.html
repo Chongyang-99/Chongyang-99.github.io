@@ -8,114 +8,57 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400&display=swap');
 :root {
-  --bg: #fdf8f0;
-  --accent: #c17038;
-  --accent-light: #faf0e6;
-  --text: #2c2c2c;
-  --text-light: #666;
-  --border: #e0d5c5;
-  --code-bg: #f5efe5;
-  --quote-bg: #faf5ed;
+  --bg: #fdf8f0; --text: #2c2c2c; --accent: #c17038; --accent-light: #faf0e6;
+  --quote-bg: #f5f5f0; --border: #ddd; --gray: #666; --code-bg: #f0ede6;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
   font-family: 'Noto Serif SC', 'Songti SC', serif;
-  color: var(--text);
   background: radial-gradient(ellipse at 85% 5%, rgba(230,90,20,0.15) 0%, rgba(240,130,50,0.08) 20%, rgba(245,170,80,0.04) 40%, transparent 65%), var(--bg);
-  background-attachment: fixed;
-  line-height: 1.8;
-  font-size: 17px;
+  background-attachment: fixed; color: var(--text); line-height: 1.8; font-size: 17px;
 }
-
-.container {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
+main { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+@media (min-width: 1024px) {
+  body { padding-left: 220px; }
+  #toc { position: fixed; left: 0; top: 0; width: 210px; height: 100vh; overflow-y: auto; padding: 24px 12px; font-size: 13px; border-right: 1px solid var(--border); background: var(--bg); }
+  #toc a { display: block; padding: 4px 8px; color: var(--gray); text-decoration: none; border-radius: 4px; margin-bottom: 2px; line-height: 1.4; }
+  #toc a:hover, #toc a.active { background: var(--accent-light); color: var(--accent); }
+  #toc-title { font-weight: 700; margin-bottom: 12px; color: var(--text); font-size: 14px; }
 }
-
-@media (min-width: 1100px) {
-  .container { margin-left: 280px; max-width: 820px; }
-}
-
-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid var(--accent); }
-h1 { font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
-.subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 4px; }
-.meta { font-size: 13px; color: var(--text-light); }
-.meta a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
-.meta a:hover { border-bottom-style: solid; }
-
-section { margin-bottom: 48px; }
-h2 { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-h3 { font-size: 18px; font-weight: 600; color: #8b4513; margin: 24px 0 12px; }
-p { margin-bottom: 14px; text-align: justify; }
-strong { color: var(--accent); font-weight: 600; }
-
-ul, ol { margin: 12px 0 16px 24px; }
-li { margin-bottom: 8px; }
-
-img.paper-fig { max-width: 100%; height: auto; border-radius: 6px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-.fig-caption { font-size: 13px; color: var(--text-light); text-align: center; margin-top: -8px; margin-bottom: 20px; }
-
-.svg-container { margin: 24px 0; text-align: center; }
-.svg-container svg { max-width: 100%; height: auto; }
-
-blockquote { background: var(--quote-bg); border-left: 4px solid var(--accent); padding: 16px 20px; margin: 16px 0; border-radius: 0 6px 6px 0; }
-blockquote .en { font-style: italic; color: var(--text-light); font-size: 15px; line-height: 1.6; }
-blockquote .divider { border: none; border-top: 1px dashed var(--border); margin: 8px 0; }
-blockquote .zh { color: var(--text); font-size: 15px; }
-blockquote .source { font-size: 12px; color: var(--accent); margin-top: 8px; }
-
-.qa-item { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.qa-q { padding: 14px 20px; cursor: pointer; font-weight: 600; background: var(--accent-light); transition: background 0.2s; display: flex; justify-content: space-between; align-items: center; }
-.qa-q:hover { background: #f0e0cc; }
-.qa-q::after { content: '+'; font-size: 20px; color: var(--accent); transition: transform 0.3s; }
-.qa-item.open .qa-q::after { transform: rotate(45deg); }
-.qa-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 20px; }
-.qa-item.open .qa-a { max-height: 2000px; padding: 14px 20px; }
-
-.problem-item { padding: 10px 16px; margin: 8px 0; background: #fff8f0; border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; }
-
-/* TOC */
-nav#toc {
-  display: none;
-}
-@media (min-width: 1100px) {
-  nav#toc {
-    display: block; position: fixed; left: 0; top: 0; width: 260px; height: 100vh;
-    overflow-y: auto; padding: 32px 16px; background: rgba(253,248,240,0.95);
-    border-right: 1px solid var(--border); font-size: 13px; z-index: 100;
-  }
-  nav#toc .toc-title { font-weight: 700; color: var(--accent); margin-bottom: 16px; font-size: 15px; }
-  nav#toc a { display: block; padding: 6px 8px; color: var(--text-light); text-decoration: none; border-radius: 4px; transition: all 0.2s; }
-  nav#toc a:hover, nav#toc a.active { background: var(--accent-light); color: var(--accent); }
-}
-
-/* Mobile TOC */
-.mobile-toc { display: none; }
-@media (max-width: 1099px) {
-  .mobile-toc {
-    display: block; position: sticky; top: 0; background: rgba(253,248,240,0.97);
-    padding: 12px 16px; border-bottom: 1px solid var(--border); z-index: 100;
-    font-size: 14px;
-  }
-  .mobile-toc summary { font-weight: 600; color: var(--accent); cursor: pointer; }
-  .mobile-toc a { display: block; padding: 6px 12px; color: var(--text-light); text-decoration: none; }
-  .mobile-toc a:hover { color: var(--accent); }
-}
-
-.katex-display { overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
-code { background: var(--code-bg); padding: 2px 6px; border-radius: 3px; font-size: 14px; font-family: 'SF Mono', 'Fira Code', monospace; }
+@media (max-width: 1023px) { #toc { display: none; } main { padding: 20px 16px 60px; } }
+header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 2px solid var(--accent); }
+h1 { font-size: 28px; line-height: 1.3; margin-bottom: 8px; }
+.subtitle { font-size: 15px; color: var(--gray); margin-bottom: 4px; }
+.meta { font-size: 13px; color: var(--gray); } .meta a { color: var(--accent); }
+h2 { font-size: 22px; margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--accent); }
+h3 { font-size: 18px; margin-top: 28px; margin-bottom: 12px; }
+h4 { font-size: 16px; margin-top: 20px; margin-bottom: 8px; }
+p { margin-bottom: 14px; }
+ul, ol { margin: 12px 0 12px 24px; } li { margin-bottom: 8px; }
+strong { color: var(--text); }
+.paper-fig { display: block; max-width: 100%; height: auto; margin: 20px auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.fig-caption { text-align: center !important; text-align-last: center !important; font-size: 15px; color: var(--gray); margin: -8px 0 24px; font-style: italic; line-height: 1.6; }
+blockquote { border-left: 4px solid var(--accent); background: var(--quote-bg); padding: 16px 20px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+blockquote .quote-en { font-style: italic; color: var(--gray); margin-bottom: 8px; font-size: 15px; line-height: 1.6; }
+blockquote .quote-zh { color: var(--text); font-size: 16px; }
+blockquote hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+.qa-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.qa-question { padding: 14px 18px; cursor: pointer; font-weight: 700; background: var(--accent-light); font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+.qa-question::after { content: "\25B8"; transition: transform 0.3s; font-size: 14px; color: var(--accent); }
+.qa-item.open .qa-question::after { transform: rotate(90deg); }
+.qa-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-size: 16px; line-height: 1.7; }
+.qa-item.open .qa-answer { max-height: 3000px; padding: 14px 18px; }
+.formula-explain { background: var(--accent-light); padding: 10px 16px; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; margin: -4px 0 16px; font-size: 16px; color: var(--text); line-height: 1.7; }
+svg { max-width: 100%; height: auto; margin: 20px auto; display: block; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: var(--code-bg); padding: 2px 5px; border-radius: 3px; }
 </style>
 </head>
 <body>
 
 <nav id="toc">
-  <div class="toc-title">Motus 阅读笔记</div>
+  <div id="toc-title">目录</div>
   <a href="#abstract">摘要</a>
   <a href="#motivation">一、Motivation</a>
   <a href="#problems">二、现存问题</a>
@@ -129,23 +72,8 @@ code { background: var(--code-bg); padding: 2px 6px; border-radius: 3px; font-si
   <a href="#qa">十、Q&amp;A</a>
 </nav>
 
-<details class="mobile-toc">
-  <summary>目录导航</summary>
-  <a href="#abstract">摘要</a>
-  <a href="#motivation">一、Motivation</a>
-  <a href="#problems">二、现存问题</a>
-  <a href="#related">三、相关工作</a>
-  <a href="#method">四、方法详解</a>
-  <a href="#experiments">五、实验结果</a>
-  <a href="#summary">六、总结</a>
-  <a href="#insight">七、Insight</a>
-  <a href="#inspiration">八、启发</a>
-  <a href="#quotes">九、关键引用</a>
-  <a href="#qa">十、Q&amp;A</a>
-</details>
 
-<div class="container">
-
+<main>
 <header>
   <h1>Motus 阅读笔记</h1>
   <p class="subtitle">Motus: A Unified Latent Action World Model &mdash; Hongzhe Bi*, Hengkai Tan* et al., Tsinghua University, 2025</p>
@@ -500,30 +428,30 @@ Motus 证明了一件事：将预训练好的视频生成模型、视觉语言�
 <h2>九、关键引用</h2>
 
 <blockquote>
-<p class="en">"This fragmentation prevents unifying multimodal generative capabilities and hinders learning from large-scale, heterogeneous data."</p>
-<hr class="divider">
-<p class="zh">碎片化建模阻碍了多模态生成能力的统一，也无法从大规模异构数据中协同学习。</p>
+<p class="quote-en">"This fragmentation prevents unifying multimodal generative capabilities and hinders learning from large-scale, heterogeneous data."</p>
+<hr>
+<p class="quote-zh">碎片化建模阻碍了多模态生成能力的统一，也无法从大规模异构数据中协同学习。</p>
 <p class="source">Section 1 (Abstract)</p>
 </blockquote>
 
 <blockquote>
-<p class="en">"We introduce latent actions that encode the motion learned directly from pixels. These latent actions allow the model to absorb motion knowledge from various sources such as internet videos, egocentric human demonstrations, and multi-robot trajectories."</p>
-<hr class="divider">
-<p class="zh">潜在动作直接从像素中学习运动。有了它，模型就能从互联网视频、第一人称人类示教、多机器人轨迹等来源中吸收运动知识。</p>
+<p class="quote-en">"We introduce latent actions that encode the motion learned directly from pixels. These latent actions allow the model to absorb motion knowledge from various sources such as internet videos, egocentric human demonstrations, and multi-robot trajectories."</p>
+<hr>
+<p class="quote-zh">潜在动作直接从像素中学习运动。有了它，模型就能从互联网视频、第一人称人类示教、多机器人轨迹等来源中吸收运动知识。</p>
 <p class="source">Section 4.2</p>
 </blockquote>
 
 <blockquote>
-<p class="en">"By allocating different timesteps and noise scales to videos and actions, respectively, Motus establishes a UniDiffuser-like scheduler to capture heterogeneous data distributions and adaptively switch between various embodied foundation models during inference."</p>
-<hr class="divider">
-<p class="zh">为视频和动作分别分配不同的时间步和噪声尺度，使 Motus 既能捕获异构数据分布，又能在推理时灵活切换不同模式。</p>
+<p class="quote-en">"By allocating different timesteps and noise scales to videos and actions, respectively, Motus establishes a UniDiffuser-like scheduler to capture heterogeneous data distributions and adaptively switch between various embodied foundation models during inference."</p>
+<hr>
+<p class="quote-zh">为视频和动作分别分配不同的时间步和噪声尺度，使 Motus 既能捕获异构数据分布，又能在推理时灵活切换不同模式。</p>
 <p class="source">Section 4.1</p>
 </blockquote>
 
 <blockquote>
-<p class="en">"Dimensional correspondence and weak action supervision jointly drive the latent-action distribution to align with the real action distribution, allowing motion priors learned from videos to naturally map to executable controls."</p>
-<hr class="divider">
-<p class="zh">维度对应加上弱动作监督，一起把 latent action 的分布往真实动作分布上拉，让从视频学到的运动先验自然映射成可执行的控制信号。</p>
+<p class="quote-en">"Dimensional correspondence and weak action supervision jointly drive the latent-action distribution to align with the real action distribution, allowing motion priors learned from videos to naturally map to executable controls."</p>
+<hr>
+<p class="quote-zh">维度对应加上弱动作监督，一起把 latent action 的分布往真实动作分布上拉，让从视频学到的运动先验自然映射成可执行的控制信号。</p>
 <p class="source">Section 4.2</p>
 </blockquote>
 </section>
@@ -533,93 +461,89 @@ Motus 证明了一件事：将预训练好的视频生成模型、视觉语言�
 <h2>十、Q&amp;A</h2>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q1: Motus 的三个 Expert 分别承担什么角色？它们之间怎么通信？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q1: Motus 的三个 Expert 分别承担什么角色？它们之间怎么通信？</span></div>
+<div class="qa-answer">
 <p>三个 Expert 分别是：(1) Video Generation Expert，基于 Wan 2.2 5B，负责预测/生成未来视频帧；(2) Action Expert，新训练的 Transformer（与 VGM 同深度 30 层，隐藏维度 1024），负责预测动作序列；(3) Understanding Expert，基于 Qwen3-VL-2B，负责理解场景和语言指令。通信方式是 Tri-model Joint Attention：每一层的 self-attention 阶段，三路的 token 拼在一起做联合注意力，但各自的 FFN 和归一化层保持独立，从而保留了各 expert 的专长。其中 VGM 和 Action Expert 用 AdaLN 注入时间步，Understanding Expert 用 LayerNorm。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q2: 光流是怎么变成"潜在动作"的？为什么选 14 维？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q2: 光流是怎么变成"潜在动作"的？为什么选 14 维？</span></div>
+<div class="qa-answer">
 <p>流程：DPFlow 算相邻帧光流 → 转 RGB 图 → DC-AE（深度卷积自编码器）编码成 4 个 512 维 token → 轻量 encoder 投影成 14 维向量。选 14 维是因为常见的双臂机器人动作空间就是 14 维（左右各 7 DoF），维度对齐让 latent 和真实动作可以直接做 L2 对齐，无需额外的映射层。这是一个刻意的设计选择，牺牲一些通用性来换取和真实动作空间的天然对应。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q3: UniDiffuser-style 调度器是怎么实现五种推理模式切换的？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q3: UniDiffuser-style 调度器是怎么实现五种推理模式切换的？</span></div>
+<div class="qa-answer">
 <p>核心是给视频和动作各自独立的扩散时间步 $\tau_v$ 和 $\tau_a$。推理时：VLA 模式 → $\tau_v$ 设为最大值 $T_\tau$（视频全噪声不去噪），只迭代去噪 $\tau_a$；VGM 模式 → 反过来；IDM 模式 → 视频 $\tau_v = 0$（输入干净未来帧），去噪 $\tau_a$；WM 模式 → 动作 $\tau_a = 0$（输入干净动作），去噪 $\tau_v$；联合预测 → 两路同时从 $T_\tau$ 开始去噪。训练时 $\tau_v$ 和 $\tau_a$ 从 Uniform(1,...,$T_\tau$) 独立采样，模型自然学到所有组合。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q4: 三阶段训练各解决什么问题？能不能跳过某个阶段？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q4: 三阶段训练各解决什么问题？能不能跳过某个阶段？</span></div>
+<div class="qa-answer">
 <p>Stage 1 解决"VGM 不懂机器人场景的物理动态"，只在视频数据上 finetune VGM。Stage 2 解决"动作 expert 没有运动先验"，引入 latent action，三路一起训，让动作 expert 从海量视频中学运动。Stage 3 解决"通用先验落不到具体机器人"，在目标机器人数据上 finetune。消融表明：跳过 Stage 1（直接从头训）掉 10 个点（77.00% vs. 87.02%），跳过 Stage 2（仅 Stage 1）掉 5 个点（81.86% vs. 87.02%），两个预训练阶段都有不可替代的价值。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q5: Latent Action VAE 训练时 90% 无标注 + 10% 有标注的配比是怎么确定的？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q5: Latent Action VAE 训练时 90% 无标注 + 10% 有标注的配比是怎么确定的？</span></div>
+<div class="qa-answer">
 <p>论文没有做这个配比的消融实验，但设计逻辑是：无标注数据负责学运动表示的多样性（光流重建），有标注数据负责把 latent 分布和真实动作空间对齐。10% 的比例是 AnyPos 等先前工作的经验值，太多标注数据会让 VAE 过拟合到特定机器人的动作分布，太少则对齐不够。$\lambda_a = 1.0$，$\beta = 1 \times 10^{-6}$，KL 正则化非常弱，说明作者更看重重建质量和对齐质量而非隐空间的光滑性。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q6: Action-Dense Video-Sparse Prediction 对性能的影响有多大？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q6: Action-Dense Video-Sparse Prediction 对性能的影响有多大？</span></div>
+<div class="qa-answer">
 <p>论文没有单独消融"如果视频和动作用同样的帧率会怎样"，但动机很明确：如果按动作帧率（30 Hz）去预测视频，一个 chunk 里视频 token 数量会远超动作 token，在 Tri-model Joint Attention 里视频 token 会主导注意力分配，动作 expert 被"淹没"。8 帧 @5 Hz vs. 48 帧 @30 Hz 让两路 token 数量大致平衡。这也是工程上提高训练效率的关键，因为视频 token 是最贵的（要过 5B 的 VGM）。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q7: Motus 在 IDM 模式下竟然比专门训练的 IDM 还好？为什么？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q7: Motus 在 IDM 模式下竟然比专门训练的 IDM 还好？为什么？</span></div>
+<div class="qa-answer">
 <p>Table 7 显示 Motus 作为 IDM 的动作 MSE 仅 0.014，ResNet18+MLP 是 0.044，DINOv2+MLP 是 0.122。原因可能有两个：(1) Motus 的 Tri-model Joint Attention 让动作 expert 能看到 VGM 和 VLM 的表征，用了比 ResNet18 / DINOv2 更强的视觉特征；(2) 联合训练 VLA+VGM+IDM+WM 等五种模式产生了正则化效果，避免了 IDM 单独训练时容易过拟合的问题。这其实是 multi-task learning 的经典收益。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q8: 8B 参数模型的推理速度能满足实时控制吗？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q8: 8B 参数模型的推理速度能满足实时控制吗？</span></div>
+<div class="qa-answer">
 <p>论文没有报告推理延迟数字，但可以估算：VLA 模式下需要 10 步 flow matching 迭代，每步要过 8B 参数的 MoT（不过 VGM 部分在 VLA 模式下虽然参与 Joint Attention 但不产生有意义的输出）。Action chunk 大小 48 步 @30 Hz，约 1.6 秒的动作。如果推理一个 chunk 的时间不超过 1.6 秒，理论上可以实时。实际上 5B 的 VGM 是大头，但由于 VLA 模式下视频始终保持噪声，可能可以做某些优化（如跳过视频解码），这是一个值得追问的点。</p>
 </div>
 </div>
 
 <div class="qa-item">
-<div class="qa-q"><span>Q9: 为什么选 Wan 2.2 5B 做 VGM 而不是更大/更新的视频生成模型？</span></div>
-<div class="qa-a">
+<div class="qa-question"><span>Q9: 为什么选 Wan 2.2 5B 做 VGM 而不是更大/更新的视频生成模型？</span></div>
+<div class="qa-answer">
 <p>论文说选 Wan 2.2 5B 是因为"accessibility and ease of use"。更大的模型会显著增加训练和推理成本，而且 MoT 架构要求三个 expert 共享 self-attention，VGM 太大会导致 hidden dimension 匹配变复杂。5B 作为视频生成模型已经足够强，且和 2B 的 VLM 在参数量上大致可比，这对 Joint Attention 的 token 表征质量平衡可能很重要。</p>
 </div>
 </div>
 
 </section>
 
-</div><!-- end container -->
+</main>
 
 <script>
-// Q&A accordion
-document.querySelectorAll('.qa-q').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('open');
-  });
+document.querySelectorAll(".qa-question").forEach(function(q) {
+  q.addEventListener("click", function() { this.parentElement.classList.toggle("open"); });
 });
-
-// TOC scroll highlight
-const sections = document.querySelectorAll('section[id]');
-const tocLinks = document.querySelectorAll('#toc a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+(function() {
+  var sections = document.querySelectorAll("section[id]");
+  var links = document.querySelectorAll("#toc a");
+  window.addEventListener("scroll", function() {
+    var scrollPos = window.scrollY + 100;
+    sections.forEach(function(sec, i) {
+      if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+        links.forEach(function(l) { l.classList.remove("active"); });
+        if (links[i]) links[i].classList.add("active");
+      }
+    });
   });
-  tocLinks.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-  });
-});
+})();
 </script>
 </body>
 </html>

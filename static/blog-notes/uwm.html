@@ -31,6 +31,7 @@ blockquote .quote-zh { color: var(--text); font-size: 16px; }
 blockquote hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
 .qa-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
 .qa-question { padding: 14px 18px; cursor: pointer; font-weight: 700; background: var(--accent-light); font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+.qa-question .katex { display: inline; }
 .qa-question::after { content: "\25B8"; transition: transform 0.3s; font-size: 14px; color: var(--accent); }
 .qa-item.open .qa-question::after { transform: rotate(90deg); }
 .qa-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-size: 16px; line-height: 1.7; }
@@ -265,7 +266,7 @@ $$\ell(\theta) = \mathbb{E}_{(o,a,o') \sim \mathcal{D},\; t_a, t_{o'} \sim \math
 </div>
 
 <div class="qa-item">
-<div class="qa-question">Q2：设 $t_{o'} = T$ 怎么就等于纯策略了？</div>
+<div class="qa-question">Q2：设 t_o' = T 怎么就等于纯策略了？</div>
 <div class="qa-answer"><p>$t_{o'} = T$ 意味着下一帧观测完全被高斯噪声覆盖，对模型来说等价于"我对未来画面一无所知"。此时模型只能依赖当前观测 $o$ 来去噪动作 $a$。训练时模型见过了 $t_{o'} = T$ 的情况（因为时间步是均匀采样的，$T$ 是合法值），所以推理时这个设定是自洽的。本质上利用了扩散模型"噪声最大 = 无信息"的数学性质。</p></div>
 </div>
 

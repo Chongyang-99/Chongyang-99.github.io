@@ -27,7 +27,9 @@ body {
   background-attachment: fixed;
   line-height: 1.8;
   font-size: 17px;
+  text-wrap: pretty;
 }
+p { text-wrap: pretty; }
 
 /* Layout */
 main {
@@ -36,7 +38,10 @@ main {
   padding: 40px 24px 100px;
 }
 @media (min-width: 1100px) {
-  main { margin-left: 280px; }
+  main { margin-left: calc(280px + (100% - 280px - 860px) / 2); }
+}
+@media (min-width: 1100px) and (max-width: 1200px) {
+  main { margin-left: 290px; }
 }
 
 /* Header */
@@ -64,10 +69,10 @@ a:hover { text-decoration: underline; }
 
 /* Tables */
 .table-wrap { overflow-x: auto; margin: 20px 0; -webkit-overflow-scrolling: touch; }
-table { border-collapse: collapse; font-size: 14px; width: 100%; }
-th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; vertical-align: middle; }
-th { background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; }
-td { background: #fff; }
+table { border-collapse: collapse; font-size: 14px; width: 100%; table-layout: auto; }
+th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; vertical-align: middle; min-width: 80px; }
+th { background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; white-space: nowrap; }
+td { background: #fff; line-height: 1.5; }
 tr:nth-child(even) td { background: #fdfaf5; }
 tr:hover td { background: rgba(193,112,56,0.08); }
 td:first-child { font-weight: 600; text-align: left; white-space: nowrap; background: var(--accent-light); }
@@ -172,6 +177,7 @@ nav#toc { display: none; }
 
 <nav id="toc">
   <div class="toc-title">WAM 深度对比</div>
+  <a href="#sec-timeline">0. 研究脉络</a>
   <a href="#sec-arch">1. 架构范式</a>
   <a href="#sec-coupling">2. 视频-动作耦合</a>
   <a href="#sec-backbone">3. Backbone 策略</a>
@@ -197,6 +203,7 @@ nav#toc { display: none; }
 <details class="mobile-toc">
   <summary>目录导航</summary>
   <ul>
+    <li><a href="#sec-timeline">0. 研究脉络</a></li>
     <li><a href="#sec-arch">1. 架构范式</a></li>
     <li><a href="#sec-coupling">2. 视频-动作耦合</a></li>
     <li><a href="#sec-backbone">3. Backbone 策略</a></li>
@@ -225,6 +232,33 @@ nav#toc { display: none; }
   <p class="subtitle">10 篇 World Action Model 论文的多维度分析</p>
   <p class="meta">2026-06-04 · 基于 PAD / UWM / DreamZero / Cosmos Policy / X-WAM / GigaWorld / Fast-WAM / DiT4DiT / LingBot-VA / Motus 阅读笔记整理</p>
 </header>
+
+<!-- ===== Section 0: Timeline ===== -->
+<section id="sec-timeline">
+<h2>〇、研究脉络：从联合去噪到多流加速</h2>
+
+<p>WAM 的故事可以分成三个阶段来看。</p>
+
+<h3>第一阶段：概念验证（2024.11）</h3>
+<p><strong>PAD</strong> 是起点。它提出了一个简单但有力的假设：既然图像生成和动作生成在技术上都是扩散去噪，那就把它们塞进同一个 DiT 里联合处理。结果验证了两件事：（1）图像预测确实能大幅提升策略性能（去掉后暴跌 28.9 个百分点）；（2）联合去噪比两阶段方案更优。PAD 在自己的 Franka Panda 平台上做到了 72% 成功率，但局限也很明显：所有模态共享一个扩散时间步，推理时没法灵活切换模式。后来 UWM 的实验发现，PAD 的 channel-wise 拼接条件注入在更复杂的真实场景（DROID 数据集）下效果很差，多数任务接近 0%。</p>
+
+<h3>第二阶段：机制创新（2025.04 - 2025.12）</h3>
+<p><strong>UWM</strong>（2025.04）做了 PAD 之后最关键的一步改进：给每个模态一个独立的扩散时间步。这个看似微小的改动带来了 12% 的性能提升，更重要的是让同一个 checkpoint 能在策略、世界模型、逆动力学、正向动力学四种模式间自由切换。UWM 还用 AdaLN 替换了 PAD 的 channel 拼接，大幅改善了真实世界的表现。"缺失模态 = 时间步设为 T"这个洞察直接影响了后来 X-WAM 的 ANS 调度和 Motus 的 UniDiffuser 调度，不过其他几条技术路线（自回归、级联、MoT 多流）各自走了不同的方向。</p>
+<p><strong>Motus</strong>（2025.12）走了另一条路：不直接预测机器人动作，而是用光流作为中间表示。先训练一个逆动力学模型（IDM）把光流映射回动作，再用 MoT 多流架构把视频流、光流流和动作流拼在一起。光流可以从任何视频中无监督提取，所以这个思路降低了对动作标注数据的依赖（但 IDM 本身仍然需要一些标注数据来训练）。</p>
+
+<h3>第三阶段：规模化与工程优化（2026.01 - 2026.04）</h3>
+<p>2026 年初开始，WAM 研究出现了明显的分化。</p>
+<p><strong>规模派</strong>以 <strong>DreamZero</strong>（2026.02）为代表，直接把 14B 参数的视频扩散模型（Wan2.1）改造成机器人策略。它选了自回归架构而非双向扩散，用 Flash 调度把推理延迟从 5.7 秒压到 150ms，并证明了"数据多样性 > 数据重复性"。未见任务 39.5% 的成绩让所有 VLA baseline 归零。</p>
+<p><strong>效率派</strong>则聚焦推理速度。<strong>Fast-WAM</strong>（2026.03）发现训练时的视频预测在推理时可以完全跳过，190ms 延迟做到 5Hz。<strong>GigaWorld</strong>（2026.03）用因果掩码从理论上证明了 video-free 推理的合理性，360ms/3Hz。<strong>DiT4DiT</strong>（2026.03）走级联路线，一个 DiT 生成视频、另一个从视频提取动作，167ms/6Hz，完全不碰预训练模型的权重。</p>
+<p><strong>功能派</strong>侧重扩展 WAM 的能力边界。<strong>Cosmos Policy</strong>（2026.01）把 WAM 当成 model-based planning 的模拟器，用 value function 对多个候选动作打分，50 条示范就能达到不错的效果。<strong>LingBot-VA</strong>（2026.01）用因果 KV cache 做自回归 VLA，动作输出频率到 50Hz。<strong>X-WAM</strong>（2026.04）把 2D 视频扩散扩展到 4D（加深度维度），用 ANS 调度器解耦视频和动作的去噪节奏，还加了 3D 重建的辅助监督。</p>
+
+<h3>两条分化路线</h3>
+<p>回头看这 10 篇工作，<strong>视频预测的角色</strong>是理解 WAM 演化的关键线索，但并非一条单一主线，而是分化成了两条路线。</p>
+<p><strong>路线 A："训练时想象，推理时跳过"</strong>。PAD 首先证明图像预测是极其高效的训练正则化；UWM 通过独立时间步让推理时可以只输出动作；Fast-WAM 和 GigaWorld 则把"推理时不生成视频"做成了显式的设计目标，速度快了好几倍。在这条路线上，视频预测从"必须做"逐步退化成了"训练辅助"。</p>
+<p><strong>路线 B："视频就是物理先验，推理时保留"</strong>。DreamZero 走的是另一个方向：它加倍押注视频生成，把 14B 视频扩散模型当核心引擎，推理时仍然生成视频。它的 Flash 调度通过在训练时把视频侧时间步偏向高噪声（Beta(7,1) 分布，均值 0.875，意味着视频几乎全是噪声），让模型大量练习"从模糊视频中提取干净动作"，这样推理时 1 步去噪就够了，延迟从 350ms 降到 150ms。但视频 token 仍然过网络、仍然参与 attention，并没有跳过视频生成这个步骤。在这条路线上，视频预测不是正则化手段，而是模型理解物理世界的核心机制。</p>
+<p>两条路线各有优势：路线 A 推理快（190ms/5Hz），适合实时控制；路线 B 泛化强（未见任务 39.5%），适合需要零样本能力的场景。这个分化本身就是 WAM 领域在一年半里最有意思的发展。</p>
+
+</section>
 
 <!-- ===== Section 1: Architecture Paradigm ===== -->
 <section id="sec-arch">
@@ -359,11 +393,11 @@ nav#toc { display: none; }
 <div class="table-wrap">
 <table>
 <tr>
-  <th style="min-width:120px">耦合方式</th>
-  <th>代表方法</th>
-  <th>工作机制</th>
-  <th>优点</th>
-  <th>缺点</th>
+  <th style="min-width:90px">耦合方式</th>
+  <th style="min-width:80px">代表方法</th>
+  <th style="min-width:200px">工作机制</th>
+  <th style="min-width:180px">优点</th>
+  <th style="min-width:180px">缺点</th>
 </tr>
 <tr>
   <td>共享时间步</td>
@@ -403,7 +437,7 @@ nav#toc { display: none; }
 <tr>
   <td>Flash 调度</td>
   <td>DreamZero-Flash</td>
-  <td>Beta 噪声调度器大幅压缩早期去噪步（只跑 1 步就到信噪比拐点），总步数从 16 降到 1</td>
+  <td>Beta 噪声调度器训练时把视频偏向高噪声，推理时去噪步从 4 降到 1（16→4 由 DiT Caching 完成）</td>
   <td>延迟从 5.7s 压到 150ms（38x）；动作质量几乎无损</td>
   <td>只对动作侧有效；视频生成质量会明显下降</td>
 </tr>
@@ -429,11 +463,11 @@ nav#toc { display: none; }
 <div class="table-wrap">
 <table>
 <tr>
-  <th style="min-width:100px">方法</th>
-  <th>Backbone</th>
+  <th style="min-width:80px">方法</th>
+  <th style="min-width:120px">Backbone</th>
   <th>参数量</th>
-  <th>预训练来源</th>
-  <th>微调策略</th>
+  <th style="min-width:150px">预训练来源</th>
+  <th style="min-width:150px">微调策略</th>
 </tr>
 <tr>
   <td>PAD</td>
@@ -451,7 +485,7 @@ nav#toc { display: none; }
 </tr>
 <tr>
   <td>Motus</td>
-  <td>Video Gen 5B + VLM 2.1B</td>
+  <td>Wan2.2 5B + Qwen3-VL 2B</td>
   <td>~8B</td>
   <td>互联网视频 + 视觉语言预训练</td>
   <td>两阶段: 8K GPU-h + 10K GPU-h</td>
@@ -525,12 +559,12 @@ nav#toc { display: none; }
 <div class="table-wrap">
 <table>
 <tr>
-  <th style="min-width:100px">方法</th>
-  <th>标注数据量</th>
-  <th>无标注视频</th>
-  <th>人类视频</th>
-  <th>跨平台数据</th>
-  <th>数据效率亮点</th>
+  <th style="min-width:80px">方法</th>
+  <th style="min-width:100px">标注数据量</th>
+  <th style="min-width:90px">无标注视频</th>
+  <th style="min-width:80px">人类视频</th>
+  <th style="min-width:80px">跨平台数据</th>
+  <th style="min-width:130px">数据效率亮点</th>
 </tr>
 <tr>
   <td>PAD</td>
@@ -617,7 +651,7 @@ nav#toc { display: none; }
 
 <p>几条规律：</p>
 <div class="insight-box">
-<strong>规律 1：视频数据是 WAM 的"氧气"。</strong> Fast-WAM 的消融最直接：去掉视频共训练，真实世界成功率从 75% 崩到 10%。PAD 去掉图像预测掉 28.9 pts，GigaWorld 去掉视频掉 18 pts。没有任何一篇论文表明完全不用视频还能训好 WAM。
+<strong>规律 1：视频数据是 WAM 的"氧气"。</strong> Fast-WAM 的消融最直接：去掉视频共训练，真实世界成功率从 ~85% 崩到 10%。PAD 去掉图像预测掉 28.9 pts，GigaWorld 去掉视频掉 18 pts。没有任何一篇论文表明完全不用视频还能训好 WAM。
 </div>
 <div class="insight-box">
 <strong>规律 2：DreamZero 开辟了"人类视频迁移"的新路。</strong> 用互联网上大量人类操作视频给机器人"补课"，不需要配对标注。这个方向最有想象力，因为人类视频几乎是无限的。
@@ -636,11 +670,11 @@ nav#toc { display: none; }
 <div class="table-wrap">
 <table>
 <tr>
-  <th style="min-width:100px">方法</th>
-  <th>推理延迟</th>
-  <th>控制频率</th>
-  <th>推理时视频</th>
-  <th>主要加速手段</th>
+  <th style="min-width:80px">方法</th>
+  <th style="min-width:90px">推理延迟</th>
+  <th style="min-width:80px">控制频率</th>
+  <th style="min-width:90px">推理时视频</th>
+  <th style="min-width:160px">主要加速手段</th>
 </tr>
 <tr>
   <td>PAD</td>
@@ -661,7 +695,7 @@ nav#toc { display: none; }
   <td class="best">~150ms (Flash)</td>
   <td class="best">7Hz</td>
   <td>生成但异步执行</td>
-  <td>CFG 并行 + DiT cache + INT8 量化 + Flash 调度 = 38x</td>
+  <td>CFG 并行 + DiT Caching + NVFP4 量化 + Flash 调度 = 38x</td>
 </tr>
 <tr>
   <td>DiT4DiT</td>
@@ -791,7 +825,7 @@ nav#toc { display: none; }
 <ul>
   <li><strong>推理时跳过视频</strong>：Fast-WAM 和 GigaWorld 推理时完全不生成视频，直接省掉最耗时的部分。前提是训练时的视频监督已经把物理理解"蒸馏"进了动作分支的权重。</li>
   <li><strong>减少去噪步数</strong>：DreamZero-Flash 用 Beta 噪声调度把 16 步压到 1 步；DiT4DiT 的 Stage-1 只做 1 步前向（不做迭代去噪）就提取特征；X-WAM 的 ANS 让动作侧只走 5 步。</li>
-  <li><strong>系统级优化</strong>：DreamZero 组合了 CFG 并行（正负引导信号打包成一个 batch）、DiT KV cache、INT8 量化，把 14B 模型延迟从 5.7 秒压到 150ms，达到 38x 加速。</li>
+  <li><strong>系统级优化</strong>：DreamZero 组合了 CFG 并行（正负引导信号打包成一个 batch）、DiT Caching（复用相邻步的 velocity 预测，16 步→4 步）、NVFP4 量化，再加 Flash 调度（4 步→1 步），把 14B 模型延迟从 5.7 秒压到 150ms，达到 38x 加速。</li>
 </ul>
 </section>
 
@@ -903,16 +937,16 @@ nav#toc { display: none; }
 <div class="table-wrap">
 <table>
 <tr>
-  <th style="min-width:100px">方法</th>
-  <th>平台</th>
-  <th>成绩</th>
-  <th>亮点</th>
+  <th style="min-width:80px">方法</th>
+  <th style="min-width:100px">平台</th>
+  <th style="min-width:100px">成绩</th>
+  <th style="min-width:160px">亮点</th>
 </tr>
 <tr>
   <td>PAD</td>
   <td>Metaworld / Real</td>
-  <td>Metaworld 72.5%, Real 78%</td>
-  <td>面对从未见过的物体成功率提升 28%</td>
+  <td>Metaworld 72.5%, Real 72% (加深度 78%)</td>
+  <td>加深度模态后提升至 78%；面对未见物体成功率提升 28%</td>
 </tr>
 <tr>
   <td>UWM</td>
@@ -935,7 +969,7 @@ nav#toc { display: none; }
 <tr>
   <td>Fast-WAM</td>
   <td>桌面操作</td>
-  <td>~75% (towel folding)</td>
+  <td>~85% (towel folding)</td>
   <td>Video-free 推理 190ms, 5Hz 闭环</td>
 </tr>
 <tr>
@@ -1059,7 +1093,7 @@ MoT 架构加上因果注意力掩码，确保动作 token 在计算上不依赖
 
 <div class="insight-box">
 <strong>Fast-WAM：训练时想象、推理时跳过。</strong><br>
-口号简洁到位。训练时视频生成为动作分支提供丰富的物理表征监督，推理时完全不跑视频分支，延迟从秒级降到 190ms。消融实验证明这不是"可选优化"，而是"必要设计"：去掉训练时的视频，真实世界成功率从 75% 崩到 10%。
+口号简洁到位。训练时视频生成为动作分支提供丰富的物理表征监督，推理时完全不跑视频分支，延迟从秒级降到 190ms。消融实验证明这不是"可选优化"，而是"必要设计"：去掉训练时的视频，真实世界成功率从 ~85% 崩到 10%。
 </div>
 
 <div class="insight-box">
