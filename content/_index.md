@@ -94,7 +94,7 @@ sections:
             <div class="pub-title">Occluded Human Body Capture with Frequency Domain Denoising Prior</div>
             <div class="pub-authors">Buzhen Huang, <span class="pub-self">Chongyang Xu</span>, Wentao Tang, Yuan Shu, Jingyi Ju, Binghui Zuo, Yangang Wang</div>
             <div class="pub-venue"><span class="pub-venue-name">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</span></div>
-            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2202.04977" target="_blank">Paper</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://openaccess.thecvf.com/content/CVPR2026/papers/Huang_Occluded_Human_Body_Capture_with_Frequency_Domain_Denoising_Prior_CVPR_2026_paper.pdf" target="_blank">Paper</a></div>
           </div>
         </div>
 
