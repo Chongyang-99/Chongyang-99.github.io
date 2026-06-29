@@ -38,7 +38,7 @@ sections:
         <div class="news-item"><span class="news-date">2026.05</span> One paper accepted by <b>ICME 2026</b> as <span class="pub-badge">(Oral Presentation)</span> !</div>
         <div class="news-item"><span class="news-date">2026.04</span> 🏆 1st Place (tied) in <b>Physical AI Competition</b> (Embodied AI track), splitting the ¥1M grand prize in Shenzhen, the city of dreams !</div>
         <div class="news-item"><span class="news-date">2026.02</span> Three papers accepted by <b>CVPR 2026</b> !</div>
-        <div class="news-item"><span class="news-date">2026.02</span> Joined <b>Tongyi Robotics</b> as an Embodied AI Intern.</div>
+        <div class="news-item"><span class="news-date">2026.02</span> Joined <b>Tongyi Lab</b> as an Embodied AI Intern.</div>
         <div class="news-item"><span class="news-date">2026.01</span> One paper accepted by <b>ICRA 2026</b> !</div>
         <div class="news-item"><span class="news-date">2025.06</span> 🏆 1st Place in <b>ManiSkill-ViTac Challenge</b> Track 1 & 3, <b>CVPR 2025</b>.</div>
         <div class="news-item"><span class="news-date">2025.06</span> 🏆 1st Prize in <b>RoboTwin Challenge</b> (Simulation & Real-World) at <b>CVPR 2025</b>, Shanghai, the city where it all began !</div>
@@ -214,6 +214,11 @@ sections:
         </div>
 
         <div class="blog-list">
+        <a class="blog-item" href="/blog-notes/bfm-evolution.html" data-tags="robotics research humanoid">
+        <span class="blog-date">2026.06</span>
+        <span class="blog-title-text">BFM 演进脉络：从 DeepMimic 到 SONIC</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">Humanoid</span></span>
+        </a>
         <a class="blog-item" href="/blog-notes/wam-deep-comparison.html" data-tags="robotics research wam">
         <span class="blog-date">2026.06</span>
         <span class="blog-title-text">WAM 论文深度横向对比</span>
@@ -223,6 +228,26 @@ sections:
         <span class="blog-date">2026.05</span>
         <span class="blog-title-text">World Action Models Survey 阅读笔记</span>
         <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">WAM</span></span>
+        </a>
+        <a class="blog-item" href="/blog-notes/humanoidgpt.html" data-tags="robotics research humanoid">
+        <span class="blog-date">2026.06</span>
+        <span class="blog-title-text">Humanoid-GPT 阅读笔记</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">Humanoid</span></span>
+        </a>
+        <a class="blog-item" href="/blog-notes/sonic.html" data-tags="robotics research humanoid">
+        <span class="blog-date">2025.11</span>
+        <span class="blog-title-text">SONIC 阅读笔记</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">Humanoid</span></span>
+        </a>
+        <a class="blog-item" href="/blog-notes/bfmzero.html" data-tags="robotics research humanoid">
+        <span class="blog-date">2025.11</span>
+        <span class="blog-title-text">BFM-Zero 阅读笔记</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">Humanoid</span></span>
+        </a>
+        <a class="blog-item" href="/blog-notes/beyondmimic.html" data-tags="robotics research humanoid">
+        <span class="blog-date">2025.08</span>
+        <span class="blog-title-text">BeyondMimic 阅读笔记</span>
+        <span class="blog-item-tags"><span class="blog-item-tag">Robotics</span><span class="blog-item-tag">Research</span><span class="blog-item-tag">Humanoid</span></span>
         </a>
         </div>
 

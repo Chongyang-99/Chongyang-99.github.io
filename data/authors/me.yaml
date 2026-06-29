@@ -11,7 +11,7 @@ name:
 postnominals: []
 status:
   icon: "🤖"
-role: '<span class="role-tagline"><span class="role-icon">🎓</span> Ph.D. Student @ Sichuan University<br><span class="role-icon">🔭</span> Embodied AI Intern @ Tongyi Robotics</span>'
+role: '<span class="role-tagline"><span class="role-icon">🎓</span> Ph.D. Student @ Sichuan University<br><span class="role-icon">🔭</span> Embodied AI Intern @ Tongyi Lab</span>'
 bio: |
   <span class="bio-hello">Hello! 👋</span>
 
