@@ -411,7 +411,7 @@ a[title="WeChat: godxzp"]:hover::after {
 
 /* Demo section */
 #demos {
-  margin-top: 1rem !important;
+  margin-top: 0 !important;
   margin-bottom: 3rem !important;
 }
 
@@ -424,7 +424,7 @@ a[title="WeChat: godxzp"]:hover::after {
 
 .demo-subtitle {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   color: #888;
   margin-bottom: 0.5rem;
   margin-top: -0.3rem;
