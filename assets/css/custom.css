@@ -409,6 +409,58 @@ a[title="WeChat: godxzp"]:hover::after {
   display: inline-block;
 }
 
+/* Demo section */
+#demos {
+  margin-top: 3rem !important;
+}
+
+.demo-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  color: #888;
+  margin-bottom: 0.8rem;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.demo-card {
+  position: relative;
+  border: 1.5px solid #a89878;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.demo-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.demo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px 6px 0 0;
+}
+
+.demo-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  padding: 8px 0;
+  background: rgba(253,248,240,0.9);
+  border-top: 1px solid #d4d0c8;
+}
+
 /* Publication section spacing */
 #papers {
   margin-top: 3rem !important;
@@ -927,6 +979,11 @@ h2, h3 {
   .pub-authors,
   .pub-venue {
     font-size: 1.1rem;
+  }
+
+  /* Demo grid: 1 column */
+  .demo-grid {
+    grid-template-columns: 1fr;
   }
 
   /* Certificate gallery: 1 column */

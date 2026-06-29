@@ -49,6 +49,45 @@ sections:
     design:
       columns: '1'
   - block: markdown
+    id: demos
+    content:
+      title: ''
+      text: |-
+        <span class="bio-hello">Demo 🤖</span>
+        <div class="demo-subtitle">Unitree G1 · SONIC + GR00T Whole-Body Control</div>
+
+        <div class="demo-grid">
+        <div class="demo-card">
+          <video class="demo-video" src="/media/demos/throw_trash.mp4" muted loop playsinline></video>
+          <div class="demo-label">Throw Trash</div>
+        </div>
+        <div class="demo-card">
+          <video class="demo-video" src="/media/demos/pick_toy.mp4" muted loop playsinline></video>
+          <div class="demo-label">Pick Toy</div>
+        </div>
+        <div class="demo-card">
+          <video class="demo-video" src="/media/demos/push_chair.mp4" muted loop playsinline></video>
+          <div class="demo-label">Push Chair</div>
+        </div>
+        <div class="demo-card">
+          <video class="demo-video" src="/media/demos/close_laptop.mp4" muted loop playsinline></video>
+          <div class="demo-label">Close Laptop</div>
+        </div>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.demo-card').forEach(function(card) {
+            var video = card.querySelector('video');
+            card.addEventListener('mouseenter', function() { video.play(); });
+            card.addEventListener('mouseleave', function() { video.pause(); video.currentTime = 0; });
+            card.addEventListener('touchstart', function() { video.play(); });
+          });
+        });
+        </script>
+    design:
+      columns: '1'
+  - block: markdown
     id: papers
     content:
       title: ''
