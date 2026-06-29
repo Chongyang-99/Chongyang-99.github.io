@@ -411,22 +411,74 @@ a[title="WeChat: godxzp"]:hover::after {
 
 /* Demo section */
 #demos {
-  margin-top: 3rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 3rem !important;
+}
+
+#demos .hbb-section,
+#demos .container,
+#demos .flex.flex-col {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .demo-subtitle {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.88rem;
   color: #888;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
+  margin-top: -0.3rem;
 }
 
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 80rem;
+.demo-scroll {
+  max-width: 1280px;
+  max-height: 500px;
   margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1.5px solid #a89878;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #c4b898 transparent;
+}
+
+.demo-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.demo-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.demo-scroll::-webkit-scrollbar-thumb {
+  background: #c4b898;
+  border-radius: 3px;
+}
+
+.demo-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a89878;
+}
+
+.demo-scroll .demo-card {
+  scroll-snap-align: start;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #d4d0c8;
+}
+
+.demo-scroll .demo-card:last-child {
+  border-bottom: none;
+}
+
+.demo-scroll .demo-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.demo-scroll .demo-video {
+  border-radius: 0;
 }
 
 .demo-card {
@@ -436,6 +488,9 @@ a[title="WeChat: godxzp"]:hover::after {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0;
 }
 
 .demo-card:hover {
@@ -448,6 +503,8 @@ a[title="WeChat: godxzp"]:hover::after {
   height: auto;
   display: block;
   border-radius: 6px 6px 0 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .demo-label {
@@ -456,7 +513,9 @@ a[title="WeChat: godxzp"]:hover::after {
   font-weight: 600;
   color: #333;
   text-align: center;
-  padding: 8px 0;
+  padding: 4px 0;
+  margin: 0 !important;
+  line-height: 1.4;
   background: rgba(253,248,240,0.9);
   border-top: 1px solid #d4d0c8;
 }
