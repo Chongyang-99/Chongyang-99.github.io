@@ -64,7 +64,7 @@ sections:
             <div class="pub-title">Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pretraining</div>
             <div class="pub-authors"><span class="pub-self">Chongyang Xu</span>, Zhao Wu, Jin Chen, Yiming Jiang, Jinhui Ye, Yuming Jiang, Shifeng Zhang, Ziliang Feng, Mu Xu, Yilun Chen, Li Lu, Steven C.H. Hoi</div>
             <div class="pub-venue"><span class="pub-venue-name">arXiv 2026</span></div>
-            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2610.00438" target="_blank">Paper</a></div>
+            <div class="pub-links"><a class="pub-link" href="https://lambdahumanoid.github.io/" target="_blank">Project</a><a class="pub-link" href="https://arxiv.org/abs/2610.00438" target="_blank">Paper</a></div>
           </div>
         </div>
 
