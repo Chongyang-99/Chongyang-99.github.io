@@ -28,34 +28,6 @@ sections:
         size: medium
         shape: circle
   - block: markdown
-    id: demos
-    content:
-      title: ''
-      text: |-
-        <span class="bio-hello">Demo 🤖</span>
-        <div class="demo-subtitle">Fully Autonomous Inference · Unitree G1 + BrainCo Revo2 Dexterous Hand + ZED Camera (wider FoV)</div>
-
-        <div class="demo-scroll">
-        <div class="demo-card">
-          <video class="demo-video" src="/media/demos/throw_trash.mp4" autoplay muted loop playsinline></video>
-          <div class="demo-label">Throw Trash</div>
-        </div>
-        <div class="demo-card">
-          <video class="demo-video" src="/media/demos/pick_toy.mp4" autoplay muted loop playsinline></video>
-          <div class="demo-label">Pick Toy</div>
-        </div>
-        <div class="demo-card">
-          <video class="demo-video" src="/media/demos/push_chair.mp4" autoplay muted loop playsinline></video>
-          <div class="demo-label">Push Chair</div>
-        </div>
-        <div class="demo-card">
-          <video class="demo-video" src="/media/demos/close_laptop.mp4" autoplay muted loop playsinline></video>
-          <div class="demo-label">Close Laptop</div>
-        </div>
-        </div>
-    design:
-      columns: '1'
-  - block: markdown
     id: news
     content:
       title: ''
@@ -85,6 +57,36 @@ sections:
         <div class="pub-meta">* Equal Contribution &nbsp; † Corresponding Author</div>
 
         <div class="pub-list">
+
+        <div class="pub-item">
+          <div class="pub-thumb"><img src="/media/lambda0.png" alt="Lambda0 humanoid loco-manipulation research"></div>
+          <div class="pub-body">
+            <div class="pub-title">Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pretraining</div>
+            <div class="pub-authors"><span class="pub-self">Chongyang Xu</span>, Zhao Wu, Jin Chen, Yiming Jiang, Jinhui Ye, Yuming Jiang, Shifeng Zhang, Ziliang Feng, Mu Xu, Yilun Chen, Li Lu, Steven C.H. Hoi</div>
+            <div class="pub-venue"><span class="pub-venue-name">arXiv 2026</span></div>
+            <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2610.00438" target="_blank">Paper</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-thumb"><img src="/media/egohumanoid-v2.png" alt="EgoHumanoid-V2 whole-body skill transfer research"></div>
+          <div class="pub-body">
+            <div class="pub-title">EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation</div>
+            <div class="pub-authors">Jin Chen, Yiming Jiang, <span class="pub-self">Chongyang Xu</span>, Modi Shi, Shijia Peng, Li Chen, Tianyu Li, Mu Xu, Yilun Chen, Steven Hoi, Hongyang Li</div>
+            <div class="pub-venue"><span class="pub-venue-name">arXiv 2026</span></div>
+            <div class="pub-links"><a class="pub-link" href="https://opendrivelab.com/EgoHumanoid-V2/" target="_blank">Project</a><a class="pub-link" href="https://arxiv.org/abs/2609.37181" target="_blank">Paper</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-thumb"><img src="/media/egoalign.png" alt="EgoAlign human-to-humanoid alignment research"></div>
+          <div class="pub-body">
+            <div class="pub-title">EgoAlign: Bridging the Human-Humanoid Gap for Long-Range Loco-Manipulation</div>
+            <div class="pub-authors">Yiming Jiang, Jin Chen, <span class="pub-self">Chongyang Xu</span>, Yilun Chen, Aimin Hao, Yisheng He</div>
+            <div class="pub-venue"><span class="pub-venue-name">arXiv 2026</span></div>
+            <div class="pub-links"><a class="pub-link" href="https://lambdahumanoid.github.io/EgoAlign/" target="_blank">Project</a><a class="pub-link" href="https://arxiv.org/abs/2609.38046" target="_blank">Paper</a></div>
+          </div>
+        </div>
 
         <div class="pub-item">
           <div class="pub-thumb"><img src="/media/ada3drift.png"></div>
