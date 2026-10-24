@@ -11,7 +11,7 @@ name:
 postnominals: []
 status:
   icon: "🤖"
-role: '<span class="role-tagline"><span class="role-icon">🎓</span> Ph.D. Student @ Sichuan University<br><span class="role-icon">🔭</span> Research Intern @ Meituan Robotics (LongCat)</span>'
+role: '<span class="role-tagline"><span class="role-icon">🎓</span> Ph.D. Student @ Sichuan University<br><span class="role-icon">🔭</span> Embodied AI Intern @ Tongyi Lab</span>'
 bio: |
   <span class="bio-hello">Hello! 👋</span>
 
@@ -58,21 +58,9 @@ education:
     end: 2023-06-30
 
 experience:
-  - role: Research Intern (LongCat Talent Program)
-    org: Meituan Robotics
-    start: 2026-09-01
-    summary: |
-      Selected for the LongCat Talent Program, focusing on embodied AI research.
-  - role: Research Intern
-    org: Tongyi Lab / ATH
-    start: 2026-02-01
-    end: 2026-09-01
-    summary: |
-      Researched world action models and humanoid loco-manipulation.
   - role: Research Intern
     org: Dexmal (原力灵机)
     start: 2025-03-01
-    end: 2026-02-01
     summary: |
       Mentored by Shuaicheng Liu. Reproduced SOTA manipulation algorithms (ACT, DP, DP3, pi0, RDT, X-VLA). Conducted research on bimanual manipulation with 3D representations. Organized X-VLA evaluations on RoboChallenge benchmark across ALOHA, Franka, UR5, and ARX5 platforms. Performed large-scale distributed hyperparameter tuning on 48 NVIDIA H20 GPUs.
   - role: Research Intern
