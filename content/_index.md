@@ -35,6 +35,7 @@ sections:
         <span class="bio-hello">News 🔥</span>
 
         <div class="news-list">
+        <div class="news-item"><span class="news-date">2026.10</span> Released the <b>λ₀</b> paper on <a href="https://arxiv.org/abs/2610.18950" target="_blank">arXiv</a> !</div>
         <div class="news-item"><span class="news-date">2026.05</span> One paper accepted by <b>ICME 2026</b> as <span class="pub-badge">(Oral Presentation)</span> !</div>
         <div class="news-item"><span class="news-date">2026.04</span> 🏆 1st Place (tied) in <b>Physical AI Competition</b> (Embodied AI track), splitting the ¥1M grand prize in Shenzhen, the city of dreams !</div>
         <div class="news-item"><span class="news-date">2026.02</span> Three papers accepted by <b>CVPR 2026</b> !</div>
@@ -59,7 +60,17 @@ sections:
         <div class="pub-list">
 
         <div class="pub-item">
-          <div class="pub-thumb"><img src="/media/lambda0.png" alt="Lambda0 humanoid loco-manipulation research"></div>
+          <div class="pub-thumb"><img src="/media/lambda0.png" alt="λ₀ humanoid loco-manipulation research"></div>
+          <div class="pub-body">
+            <div class="pub-title">λ₀: Scaling Open-World Egocentric Human Data for Humanoid Loco-Manipulation</div>
+            <div class="pub-authors"><span class="pub-self">Chongyang Xu</span>, Jin Chen, Jinhui Ye, Yilun Chen, Yiming Jiang, Zhao Wu, Hu Wei, Lin Qu, Shifeng Zhang, Yisheng He, Yuming Jiang, Zenan Meng, Zheng Wu, Mu Xu, Steven Hoi</div>
+            <div class="pub-venue"><span class="pub-venue-name">arXiv 2026</span></div>
+            <div class="pub-links"><a class="pub-link" href="https://lambdahumanoid.github.io/" target="_blank">Project</a><a class="pub-link" href="https://arxiv.org/abs/2610.18950" target="_blank">Paper</a><a class="pub-link" href="https://github.com/LambdaHumanoid/openlambda" target="_blank">Code</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-thumb"><img src="/media/humanverse-dataset.webp" alt="HumanVerse dataset overview"></div>
           <div class="pub-body">
             <div class="pub-title">Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pretraining</div>
             <div class="pub-authors"><span class="pub-self">Chongyang Xu</span>, Zhao Wu, Jin Chen, Yiming Jiang, Jinhui Ye, Yuming Jiang, Shifeng Zhang, Ziliang Feng, Mu Xu, Yilun Chen, Li Lu, Steven C.H. Hoi</div>
