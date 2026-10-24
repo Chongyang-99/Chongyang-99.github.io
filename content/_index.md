@@ -36,6 +36,7 @@ sections:
 
         <div class="news-list">
         <div class="news-item"><span class="news-date">2026.10</span> Released the <b>λ₀</b> paper on <a href="https://arxiv.org/abs/2610.18950" target="_blank">arXiv</a> !</div>
+        <div class="news-item"><span class="news-date">2026.09</span> Joined <b>Meituan Robotics</b> as a Research Intern through the <b>LongCat Talent Program</b>.</div>
         <div class="news-item"><span class="news-date">2026.05</span> One paper accepted by <b>ICME 2026</b> as <span class="pub-badge">(Oral Presentation)</span> !</div>
         <div class="news-item"><span class="news-date">2026.04</span> 🏆 1st Place (tied) in <b>Physical AI Competition</b> (Embodied AI track), splitting the ¥1M grand prize in Shenzhen, the city of dreams !</div>
         <div class="news-item"><span class="news-date">2026.02</span> Three papers accepted by <b>CVPR 2026</b> !</div>
